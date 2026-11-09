@@ -1,0 +1,708 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>TOK Essay Guides May 2027</title>
+</head>
+<body>
+<style>
+/* Layout: sticky two-row bar (site pages, then jumps within a page); one reading column; each prompt has its own hue, each area of knowledge keeps its own colour */
+:root{
+--bg:#f5f7fc;--surface:#ffffff;--ink:#1a1e3c;--muted:#4d5578;--line:#d8def0;--hero:#14183a;--hero-ink:#ffffff;--on:#ffffff;
+--c-arts:#7c3aed;--c-hist:#b45309;--c-hum:#be185d;--c-nat:#15803d;--c-math:#1d4ed8;
+--r-claim:#0e7490;--r-ex:#4d7c0f;--r-exp:#6d28d9;--r-link:#b45309;--r-imp:#be185d;--r-ctr:#b91c1c;--r-int:#1d4ed8;
+--p1:#7c3aed;--p2:#0e7490;--p3:#be185d;--p4:#1d4ed8;--p5:#4d7c0f;--p6:#b91c1c;
+--disp:"Iowan Old Style","Palatino Linotype",Palatino,Georgia,serif;
+--body:"Avenir Next","Segoe UI",system-ui,-apple-system,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+--bg:#0f1226;--surface:#181c38;--ink:#eceffb;--muted:#a9b2d6;--line:#2b3160;--hero:#1b2058;--on:#10131f;
+--c-arts:#a78bfa;--c-hist:#f59e0b;--c-hum:#f472b6;--c-nat:#4ade80;--c-math:#60a5fa;
+--r-claim:#22d3ee;--r-ex:#a3e635;--r-exp:#a78bfa;--r-link:#fbbf24;--r-imp:#f472b6;--r-ctr:#f87171;--r-int:#60a5fa;
+--p1:#a78bfa;--p2:#22d3ee;--p3:#f472b6;--p4:#60a5fa;--p5:#a3e635;--p6:#f87171;color-scheme:dark}}
+:root[data-theme="dark"]{
+--bg:#0f1226;--surface:#181c38;--ink:#eceffb;--muted:#a9b2d6;--line:#2b3160;--hero:#1b2058;--on:#10131f;
+--c-arts:#a78bfa;--c-hist:#f59e0b;--c-hum:#f472b6;--c-nat:#4ade80;--c-math:#60a5fa;
+--r-claim:#22d3ee;--r-ex:#a3e635;--r-exp:#a78bfa;--r-link:#fbbf24;--r-imp:#f472b6;--r-ctr:#f87171;--r-int:#60a5fa;
+--p1:#a78bfa;--p2:#22d3ee;--p3:#f472b6;--p4:#60a5fa;--p5:#a3e635;--p6:#f87171;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:400 16px/1.62 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:30;background:var(--surface)}
+h1,h2,h3{font-family:var(--disp);line-height:1.18;margin:0;text-wrap:balance}
+h2{font-size:1.7rem;padding-bottom:8px;border-bottom:5px solid var(--s,var(--ink));margin:0 0 6px}
+h3{font-size:1.15rem}
+p{margin:0}
+ul,ol{margin:0;padding-left:20px}
+li{margin:4px 0}
+a{color:var(--c-math)}
+.wrap{max-width:980px;margin:0 auto}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--surface);border-bottom:1px solid var(--line);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:6px max(16px,env(safe-area-inset-right,0px)) 6px max(16px,env(safe-area-inset-left,0px))}
+.row{overflow-x:auto;white-space:nowrap;padding:3px 0}
+.row a,.row button{display:inline-block;text-decoration:none;color:var(--ink);background:transparent;font:600 .88rem var(--body);padding:3px 11px;border-radius:999px;border:2px solid var(--s);margin-right:6px;cursor:pointer}
+.row a:hover,.row button:hover,.row a[aria-current="page"]{background:var(--s);color:var(--on)}
+.row.sub{border-top:1px solid var(--line);margin-top:3px;padding-top:6px}
+.row.sub button{font-size:.82rem;padding:2px 10px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--ink);outline-offset:2px}
+.hero{background:color-mix(in srgb,var(--pc,#2a2f6e) 38%,var(--hero));color:var(--hero-ink);margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:34px max(16px,env(safe-area-inset-right,0px)) 30px max(16px,env(safe-area-inset-left,0px))}
+.hero .wrap{display:grid;gap:14px}
+.hero h1{font-size:clamp(2rem,6vw,3.2rem)}
+.hero .q{font-family:var(--disp);font-size:1.3rem;max-width:40ch;line-height:1.35}
+.hero .meta{font-size:.95rem;opacity:.92}
+.stripe{display:flex;height:12px;border-radius:6px;overflow:hidden;max-width:420px}
+.stripe i{flex:1}
+.job{background:var(--surface);color:var(--ink);border-radius:10px;padding:14px 16px;max-width:66ch}
+.job b{color:var(--pc,var(--r-claim))}
+section{padding-top:44px;display:grid;gap:16px;scroll-margin-top:96px}
+.lead{color:var(--muted);max-width:68ch}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,270px),1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px 16px;min-width:0;display:grid;gap:6px;align-content:start}
+.tint{background:color-mix(in srgb,var(--s) 13%,var(--surface));border:2px solid var(--s)}
+.tint h3{color:color-mix(in srgb,var(--s) 60%,var(--ink))}
+.chip{display:inline-block;background:var(--s);color:var(--on);font-weight:700;font-size:.82rem;border-radius:6px;padding:1px 9px;margin-right:4px}
+.s-claim{--s:var(--r-claim)}.s-ex{--s:var(--r-ex)}.s-exp{--s:var(--r-exp)}.s-link{--s:var(--r-link)}.s-imp{--s:var(--r-imp)}.s-ctr{--s:var(--r-ctr)}.s-int{--s:var(--r-int)}
+.k-arts{--s:var(--c-arts)}.k-hist{--s:var(--c-hist)}.k-hum{--s:var(--c-hum)}.k-nat{--s:var(--c-nat)}.k-math{--s:var(--c-math)}
+.q1{--s:var(--p1)}.q2{--s:var(--p2)}.q3{--s:var(--p3)}.q4{--s:var(--p4)}.q5{--s:var(--p5)}.q6{--s:var(--p6)}
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:12px;counter-reset:st}
+.step{counter-increment:st;position:relative;padding-top:22px}
+.step h3::before{content:counter(st);display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;background:var(--s);color:var(--on);font:700 1rem var(--body);margin-right:8px}
+.bar{display:flex;gap:4px;flex-wrap:wrap}
+.bar div{flex:var(--w) 1 var(--min,120px);min-width:0;background:var(--s);color:var(--on);border-radius:8px;padding:10px 12px;font-weight:600;font-size:.92rem;line-height:1.3}
+.bar small{display:block;font-weight:500;font-size:.82rem;opacity:.95}
+.recipe{display:grid;gap:8px}
+.role{display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;background:color-mix(in srgb,var(--s) 11%,var(--surface));border-left:6px solid var(--s);border-radius:6px;padding:8px 12px}
+.role .chip{align-self:start;white-space:nowrap}
+.role p{font-size:.95rem}
+.role em{color:var(--muted);font-style:normal;font-size:.88rem}
+.starters{background:var(--surface);border:1px dashed var(--muted);border-radius:8px;padding:10px 14px}
+.starters li{font-style:italic}
+.para-head{display:flex;gap:10px;align-items:baseline;flex-wrap:wrap}
+.words{font-weight:700;color:var(--s)}
+.scroll{overflow-x:auto;border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:.93rem}
+th,td{border:1px solid var(--line);padding:8px 10px;text-align:left;vertical-align:top;background:var(--surface)}
+th{background:color-mix(in srgb,var(--s,var(--ink)) 18%,var(--surface))}
+.rub{min-width:780px;font-size:.9rem}
+.rub caption{text-align:left;font-weight:700;padding:10px;background:color-mix(in srgb,var(--c-math) 18%,var(--surface));border:1px solid var(--line);border-bottom:0}
+.rub .band td{background:var(--bg);font-weight:700}
+.rub .chr td{background:var(--bg)}
+.tabs{display:flex;flex-wrap:wrap;gap:8px}
+.tabs button{font:700 .95rem var(--body);color:var(--ink);background:var(--surface);border:3px solid var(--s);border-radius:10px;padding:8px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{background:var(--s);color:var(--on)}
+.panel{display:grid;gap:12px}
+.ex{background:color-mix(in srgb,var(--s) 9%,var(--surface));border:2px solid var(--s);border-radius:10px;padding:14px 16px;display:grid;gap:5px;min-width:0;align-content:start}
+.ex h3{color:color-mix(in srgb,var(--s) 60%,var(--ink));font-size:1.05rem}
+.ex p{font-size:.93rem}
+.ex b{color:color-mix(in srgb,var(--s) 65%,var(--ink))}
+.ex .no{display:inline-grid;place-items:center;min-width:28px;height:28px;border-radius:50%;background:var(--s);color:var(--on);font-weight:700;font-size:.85rem;margin-right:8px}
+.trap{border-left:6px solid var(--r-ctr);background:color-mix(in srgb,var(--r-ctr) 9%,var(--surface));border-radius:6px;padding:10px 14px}
+.trap b{color:color-mix(in srgb,var(--r-ctr) 70%,var(--ink))}
+.chk{display:flex;gap:10px;align-items:flex-start;padding:5px 0}
+.chk input{margin-top:5px;width:18px;height:18px;accent-color:var(--s);flex:none}
+.prog{height:12px;background:var(--line);border-radius:6px;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--r-ex)}
+.note{background:color-mix(in srgb,var(--r-link) 14%,var(--surface));border:1px solid var(--r-link);border-radius:8px;padding:10px 14px;font-size:.92rem}
+.ref{font-size:.9rem;color:var(--muted);overflow-wrap:anywhere}
+.vid{width:100%;aspect-ratio:16/9;border:0;border-radius:8px;background:var(--ink)}
+.pcard{display:grid;gap:8px;text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--s) 11%,var(--surface));border:2px solid var(--s);border-top-width:10px;border-radius:12px;padding:14px 16px;align-content:start}
+.pcard:hover{background:color-mix(in srgb,var(--s) 22%,var(--surface))}
+.pcard .num{font:700 .85rem var(--body);color:color-mix(in srgb,var(--s) 70%,var(--ink));letter-spacing:.04em;text-transform:uppercase}
+.pcard h3{font-size:1.1rem}
+.pcard p{font-size:.92rem}
+.pcard .go{font-weight:700;color:color-mix(in srgb,var(--s) 70%,var(--ink))}
+.areas{display:flex;gap:6px;flex-wrap:wrap}
+.areas span{background:var(--s);color:var(--on);font-weight:700;font-size:.78rem;border-radius:999px;padding:1px 9px}
+.hrow{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
+.hrow h1{flex:1 1 360px}
+.disc{flex:0 1 300px;margin-left:auto;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.35);border-radius:8px;padding:8px 12px;font-size:.8rem;line-height:1.4;color:var(--hero-ink)}
+.disc b{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;opacity:.9}
+@media (max-width:560px){.disc{flex:1 1 100%;margin-left:0}}
+footer{padding:44px 0 56px;color:var(--muted);font-size:.9rem}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
+</style>
+
+<div class="top"><div class="wrap">
+<div class="row" id="rowSite" aria-label="Pages"></div>
+<div class="row sub" id="rowJump" aria-label="Jump to a section on this page" hidden></div>
+</div></div>
+
+<div id="app"></div>
+
+<script>
+var A2=[
+{k:"nat",h:"Natural sciences",x:[
+["Declaration of Helsinki (1964, revised repeatedly)","Protecting research participants","Consent and ethics review became expected standards as the code was revised.","Ethics committees and journals check studies against it before work starts.","A code guides only where institutions apply it, and practice often changes before codes do."],
+["Nuremberg Code (1947)","Voluntary consent","Written after the trial of Nazi doctors, it made voluntary consent an explicit requirement.","Later codes, including Helsinki, built on it.","It followed atrocities instead of preventing them, so guidance arrived late."],
+["Thalidomide and drug regulation (late 1950s–1962)","Protecting public safety","After thalidomide was linked to severe birth defects, US law in 1962 required evidence of safety and effectiveness.","Drugs must now show evidence before approval.","The concern for safety existed before the harm, so guidance was uneven."],
+["The 3Rs in animal research (1959)","Humane treatment of animals","Russell and Burch proposed replacing, reducing and refining animal use, and the idea became widely adopted.","Researchers are expected to justify animal use and look for alternatives.","People disagree about what counts as enough reduction, so application stays contested."],
+["Asilomar conference on recombinant DNA (1975)","Caution about risk","Scientists paused some experiments and set containment guidelines before the risks were fully known.","Precaution shaped how genetic engineering research was done.","Critics asked whether scientists should set their own limits."],
+["He Jiankui and gene-edited babies (2018)","Responsible innovation and consent","The claim of creating gene-edited babies was widely condemned, and He was later sentenced to prison in China.","Shared norms let the scientific community judge and respond.","The norms did not stop the experiment, so guidance is not control."],
+["Henrietta Lacks and HeLa cells (1951 onward)","Consent and ownership of samples","Her cells were taken in 1951 without her knowledge. In 2013 an agreement was reached with her family over access to genome data from the cells.","Modern consent practice for tissue samples responds to cases like this.","The value was recognised only decades later."],
+["Plate tectonics (1910s–1960s)","Evidence as the test of theories","Wegener’s drift idea was widely rejected partly for lack of a mechanism. Seafloor evidence in the 1960s changed what counted as enough.","The same commitment to evidence let scientists revise their view.","Authority and expectations delayed acceptance, so standards were applied unevenly."],
+["Clinical trial registration (from 2005)","Transparency","Major medical journals began requiring trials to be registered in advance as a condition of publication.","Registration makes it harder to hide unfavourable results.","Compliance has been uneven, so rules need enforcement."],
+["Montreal Protocol (1987)","Precaution under uncertainty","Countries agreed to phase out ozone-depleting chemicals, and the agreement was strengthened by later amendments.","Precaution guided policy while understanding was still developing.","It required political agreement, and economic costs competed with the value."]
+]},
+{k:"hist",h:"History",x:[
+["E. P. Thompson, The Making of the English Working Class (1963)","Whose lives are worth studying","Historians turned attention to ordinary people as well as rulers.","The change redirected the questions and sources historians used while the demand for evidence stayed.","Records of ordinary lives survive unevenly, so a new priority cannot create testimony that was never preserved."],
+["Ranke and the archive (19th century)","Objectivity through primary sources","Leopold von Ranke’s approach made archival documents central to professional history. Later critics argued that choosing and interpreting documents is never neutral.","Even critics still expect claims to be supported by sources.","Archives themselves reflect who had the power to record."],
+["E. H. Carr, What Is History? (1961)","Objectivity","Carr argued that the historian’s own present shapes which facts are selected.","Historians were pushed to state their assumptions openly while evidence remained the check.","Critics said it risks relativism, so how far interpretation shapes facts is disputed."],
+["Butterfield, The Whig Interpretation of History (1931)","Not judging the past by present values","Butterfield warned against reading the past as a march toward present ideals.","A stable rule to understand the past on its own terms guides how historians handle changing values.","Historians disagree about when moral judgement of the past is appropriate."],
+["Women’s history and gender (1970s–80s)","Inclusion","Historians such as Joan Scott argued that gender is a useful category of historical analysis (1986), prompting new questions and sources.","It changed which questions were asked while evidence standards stayed.","Sources about women’s lives are often sparse or written by others."],
+["Subaltern Studies (from the 1980s)","Recovering voices excluded from elite accounts","A group of South Asian historians, led by Ranajit Guha, argued that nationalist histories had overlooked peasants and other non-elites.","The commitment redirected inquiry toward new questions and new readings of sources.","Critics debated whether the sources let non-elites be heard directly."],
+["Oral history (1970s onward)","Including voices absent from documents","Interviews gained acceptance as evidence, for example through Paul Thompson’s The Voice of the Past (1978).","It opened new groups to historical study.","Memory is shaped by time and present concerns, so interviews need cross-checking."],
+["The Fischer controversy (1960s)","Honesty about national responsibility","Fritz Fischer’s 1961 book argued that Germany bore major responsibility for the First World War, which set off a bitter debate in Germany.","The dispute was argued through documents, not only national feeling.","National values can resist unwelcome conclusions."],
+["South Africa’s Truth and Reconciliation Commission (1996–98)","Truth-telling as a basis for reconciliation","The commission collected testimony about apartheid-era abuses and treated survivors’ accounts as a central source.","Values about justice and recognition shaped what counted as a useful record.","Testimony is not a full history, and the trade-off between amnesty and justice was contested."],
+["Return of the Benin Bronzes (2022)","Ethical ownership and restitution","Objects taken in a British military expedition in 1897 are being returned from museums. In 2022 Germany agreed to return items to Nigeria.","Changing views on ownership affect where evidence is held and who interprets it.","Debate continues over who should hold such objects and how researchers get access."]
+]},
+{k:"hum",h:"Human sciences",x:[
+["Psychology’s replication projects (2010s)","Reliability over novelty","A 2015 attempt to replicate 100 published psychology studies reproduced fewer than half of the results. Researchers adopted practices such as pre-registration and data sharing.","The value of reliable findings now shapes study design.","Incentives still reward novelty, so priorities compete."],
+["Stanford prison experiment (1971)","Protection of participants","Today’s ethics review would not permit the study, and later critics also questioned its methods.","Review boards now weigh harm and consent before studies begin.","A study that shaped thinking for decades was later reassessed."],
+["Milgram’s obedience studies (1960s)","Avoiding harm and deception","The studies prompted debate about deception and distress, and research ethics rules later became stricter.","Researchers must justify any deception and debrief participants.","Some argue that strict rules now stop socially valuable questions from being studied."],
+["Tuskegee syphilis study and the Belmont Report (1932–1979)","Respect for persons","A US study left Black men with syphilis untreated until 1972. Public exposure led to a 1974 law and the 1979 Belmont Report, which set out respect for persons, beneficence and justice.","Ethics review boards now apply these principles.","The principles arrived after harm was done, and applying them still involves argument."],
+["WEIRD samples (2010)","Generalisability","A 2010 paper showed that many behavioural findings came from Western, educated, industrialised, rich, democratic participants. It prompted calls for more varied samples.","The commitment to general claims led researchers to test them in other populations.","Broader sampling is costly, so convenience samples remain common."],
+["Behavioural economics and prospect theory (1979)","Describing how people really decide","Kahneman and Tversky showed systematic departures from expected-utility models.","The aim of predicting behaviour stayed stable while models changed.","Some argue that simpler models can still be more useful."],
+["Writing Culture and reflexive anthropology (1986)","Fair representation of others","The edited volume questioned the authority of the ethnographer and encouraged attention to how accounts are constructed.","Researchers now reflect on their own position and involve communities more.","Critics worried that reflexivity can pull attention away from the people studied."],
+["Homosexuality and the DSM (1973)","Evidence-based classification","In 1973 the American Psychiatric Association removed homosexuality as a mental disorder from the DSM, after arguments about the evidence and challenges from activists and researchers.","It showed a commitment to evidence able to revise a classification.","Social pressure and evidence were intertwined, so they are hard to separate."],
+["Facebook emotional contagion study (2014)","Informed consent","A study that altered users’ news feeds drew criticism for lack of explicit consent, and the journal published an editorial expression of concern.","The debate shaped expectations about consent in online research.","Platform terms of use and research norms still conflict."],
+["Beyond GDP (2009)","Measuring what matters","A commission led by Stiglitz, Sen and Fitoussi argued that GDP is an inadequate measure of well-being.","Statisticians and governments broadened the indicators they use.","Well-being is harder to measure and compare than output."]
+]},
+{k:"math",h:"Mathematics",x:[
+["Four-colour theorem (1976)","Certainty through checkable proof","Appel and Haken’s proof relied on a computer check, and mathematicians debated whether that counts as proof.","The value of certainty stayed and was applied to computer-assisted methods.","A proof no human can fully check raises the question of who can verify it."],
+["Flyspeck and the Kepler conjecture (completed 2014)","Certainty","Hales’s proof was so complex that referees could not fully check it, which led to a project to verify it formally by computer.","A continuing concern for certainty produced a new form of checking.","Verification software has its own assumptions."],
+["Non-Euclidean geometry (1820s–30s)","Consistency over intuitive truth","Bolyai and Lobachevsky developed geometries in which Euclid’s parallel postulate fails. Mathematicians came to accept axiom systems on the basis of consistency instead of obviousness.","Logical rigour still decides what follows from each system.","It raises the question of which system fits the physical world."],
+["Hilbert’s programme and Gödel (1931)","Complete certainty about foundations","Gödel’s theorems showed that Hilbert’s hope of proving the consistency of mathematics within itself could not be fully met.","Mathematicians kept valuing rigorous proof while accepting limits.","A guiding aim can fail and still direct valuable work."],
+["Rigour in calculus (19th century)","Rigour","Calculus worked from the 1600s but relied on ideas such as infinitesimals, which Berkeley criticised in 1734. In the 1800s Cauchy and Weierstrass rebuilt it on limits.","The same aim of reliable reasoning produced new foundations.","The rigorous version lost some of the intuitive appeal of the older methods."],
+["Intuitionism (early 20th century)","Constructive proof","Brouwer argued that mathematical existence should require a construction and rejected some classical methods.","Constructive mathematics remains a recognised approach.","Most mathematicians kept classical methods because they are more powerful, so values about proof compete."],
+["The axiom of choice (1904 onward)","Usefulness against intuition","Many mathematicians objected when Zermelo stated it in 1904. It later became part of the standard ZFC set theory.","The value placed on powerful, fruitful axioms guided acceptance.","It implies counterintuitive results such as the Banach–Tarski paradox."],
+["Negative and complex numbers","Usefulness against meaning","Many European mathematicians once treated them with suspicion. They were accepted as their usefulness and consistency became clear.","The commitment to coherent, fruitful methods outlasted early doubts about meaning.","Acceptance depended on a gradual change in what counts as a legitimate number."],
+["Wiles and Fermat’s Last Theorem (1993–95)","Community checking","Wiles announced a proof in 1993. Reviewers found a gap, which he and Taylor repaired, and the corrected proof was published in 1995.","Peer scrutiny caught the error.","Few mathematicians can check such a proof in full, so trust in experts matters."],
+["Perelman and the Poincaré conjecture (2002–2010)","Integrity and recognition","Perelman posted his proof online instead of publishing in a journal, declined the 2006 Fields Medal and later the Clay prize.","It shows values about credit and recognition shaping how mathematical knowledge is shared and validated.","It raises the question of whether informal posting is enough to verify major results."]
+]},
+{k:"arts",h:"The arts",x:[
+["Salon des Refusés (1863)","Academic standards of taste","After the official Salon rejected many works, an alternative exhibition was held, including Manet’s Le Déjeuner sur l’herbe.","The dispute made standards of judgement explicit and open to debate.","A change in taste alone does not settle what knowledge the arts provide."],
+["The first Impressionist exhibition (1874)","Finished technique against immediate perception","Artists exhibited independently of the Salon. The group’s name came from a critic’s mocking comment on Monet’s Impression, Sunrise.","Skill and close observation still guided the painters while the standard of finish changed.","Public acceptance took years, so taste can lag."],
+["Duchamp’s Fountain (1917)","What counts as art","A urinal submitted to an exhibition challenged assumptions about craft and originality.","It prompted questions about concept and context that artists and critics still use.","Critics argue that if anything can be art, the concept loses explanatory value."],
+["The Rite of Spring (1913)","Musical convention","The Paris premiere provoked audience protest because its rhythms and dissonance broke expectations.","Composers kept valuing craft and expressive power while conventions shifted.","The reaction shows how expectations can resist new forms."],
+["Linda Nochlin, “Why Have There Been No Great Women Artists?” (1971)","Fairness in recognising artists","Nochlin argued that institutions, not a lack of talent, limited women’s access to training and recognition.","Museums and scholars re-examined whose work to collect and display.","Debate continues over how far corrections should alter judgements of quality."],
+["Vermeer’s rediscovery (19th century)","Aesthetic reputation","Vermeer was little known for about two centuries until critics such as Thoré-Bürger promoted his work in the 1860s.","Careful observation and craft remained the basis for later praise.","Reputation depends on who has the power to promote."],
+["Staging The Merchant of Venice","Moral sensitivity","As attitudes to antisemitism changed, directors have reinterpreted Shylock, sometimes emphasising the prejudice he faces.","The play still guides thought about justice and prejudice even as values around it shift.","Some argue that changing a staging distorts the original."],
+["Nazi-looted art and the Washington Principles (1998)","Ethical ownership","Dozens of countries endorsed non-binding principles for returning art looted during the Nazi era.","Museums now research provenance before display.","The principles are voluntary, so results vary."],
+["Gone with the Wind on streaming (2020)","Ethical against artistic value","In 2020 HBO Max temporarily removed the film, then restored it with an introduction discussing its portrayal of slavery.","Contextualising let the work stay available while acknowledging changed values.","Critics disagree about whether to contextualise or remove."],
+["Degenerate Art exhibition (1937)","State-imposed taste","The Nazi government displayed modern works to ridicule them and removed many from museums.","Artists, collectors and later museums kept valuing the works, so other values persisted despite imposed ones.","It shows values can be used to suppress as well as to guide."]
+]}
+];
+var ORIG="<p class=\"lead\">The values that guide a field have two broad sources. Knowing which source your value comes from helps you explain how it guides, and why it can change.</p>\n<div class=\"grid\">\n<div class=\"card tint s-claim\"><h3>1. Epistemic values: from inside the practice of knowing</h3>\n<p><b>Epistemic values</b> are the standards a community uses to decide whether a claim counts as knowledge. They are passed on through training, journals, peer review and the methods of the field.</p>\n<ul>\n<li><b>Accuracy:</b> claims match the facts as far as they can be checked.</li>\n<li><b>Evidence:</b> claims are backed by observations, sources or proof.</li>\n<li><b>Rigour and consistency:</b> reasoning follows clear rules without contradiction.</li>\n<li><b>Transparency and reproducibility:</b> others can see the method and repeat the check.</li>\n<li><b>Simplicity and explanatory power:</b> an explanation accounts for a lot with little.</li>\n</ul>\n<p><b>How they guide:</b> they shape what counts as a good reason to believe, and which methods are trusted.</p>\n<p><b>Why they change:</b> practice exposes a weakness, or new tools make an old standard unworkable. What usually changes is the weight or the meaning of the value, for example what counts as proof once computers can check cases.</p>\n<p><b>Examples in this guide:</b> rigour in calculus; the four-colour theorem and Flyspeck; psychology’s replication projects; plate tectonics.</p></div>\n<div class=\"card tint s-imp\"><h3>2. Non-epistemic values: from outside, in society and culture</h3>\n<p>These do not decide whether a claim counts as knowledge. They come from the wider world the researchers live in: ethics, culture, politics, religion, economics and taste. They reach the field through laws, funders, institutions and public pressure.</p>\n<p><b>Typical values:</b> fairness, respect for persons, welfare, inclusion, caution about risk, national or cultural identity.</p>\n<p><b>Mostly shape:</b> what is worth asking, what is acceptable to do, and who takes part.</p>\n<p><b>Why they change:</b> societies change their views, often after a scandal, a harm or a challenge from excluded groups.</p>\n<p><b>Examples in this guide:</b> the Declaration of Helsinki; E. P. Thompson; Tuskegee and the Belmont Report; Nochlin’s essay; the Benin Bronzes.</p></div>\n</div>\n<div class=\"card tint s-exp\"><h3>The two sources interact</h3>\n<ul>\n<li><b>Outside to inside:</b> an ethical value can become a research standard. Concern for participants became consent rules that journals and ethics committees now enforce.</li>\n<li><b>Inside to outside:</b> a field can discover weaknesses in its own practice, and that finding can push it to revise its priorities, as replication projects did in psychology.</li>\n<li><b>Power:</b> ask whose preferred values become the standard, and whose questions look worth pursuing as a result.</li>\n</ul></div>\n<h3>How to use this in your essay</h3>\n<ul>\n<li>Name the source of your value in the claim paragraph. For example: “This value comes from the ethical expectations of society”, or “This value comes from the field’s own standards of proof”.</li>\n<li>Using one source in each area gives you something to compare. A value that comes from inside a field may change more slowly than one that comes from outside, and you can test whether that holds.</li>\n<li>Use the interaction in your counterclaim. If an outside value became an inside standard, ask whether it guides because the field believes in it or because institutions enforce it.</li>\n</ul>\n";
+function vidHtml(id,t){return'<iframe class="vid" width="973" height="547" src="https://www.youtube.com/embed/'+id+'" title="TOK Today video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>'}
+
+var DISC='<div class="disc" role="note"><b>Disclaimer</b>This guide was created using Claude. It compiled the notes using Clastify, TOK Today (YouTube) and Revision Dojo.</div>';
+var AK={arts:"The arts",hist:"History",hum:"Human sciences",nat:"Natural sciences",math:"Mathematics"};
+var HUES={arts:"#a78bfa",hist:"#f59e0b",hum:"#f472b6",nat:"#4ade80",math:"#60a5fa"};
+
+var P=[
+/* ---------------- 1 ---------------- */
+{id:"p1",vid:"_9oEeVdjOfk",n:1,short:"The artist or the historian",
+q:"Do we gain a better appreciation of the human experience from the artist or the historian? Discuss with reference to the arts and history.",
+meta:"May 2027 session · 1,600 words maximum · the arts and history are set for you",
+ar:["The arts","History"],ak:["arts","hist"],
+job:"compare what the artist and the historian let us appreciate about human experience, then judge which route gives the better appreciation, or in what way each does.",
+idea:[["Define","Decide what “appreciation of the human experience” means: feeling what life was like, understanding causes and patterns, or recognising shared emotions. Use that meaning in every paragraph.","claim"],
+["Compare","Show what the artist offers (perspective, emotion, imagination, form) and what the historian offers (evidence, context, change over time).","ex"],
+["Judge","“Better” asks for a judgement. Say by what standard one route is better, for whom, and for which kind of experience.","exp"],
+["Test","Look for overlap: novelists who research, historians who tell stories. A tidy contrast between “art is feeling, history is fact” will not survive examination.","ctr"]],
+terms:[["“Appreciation”","More than information. It can mean understanding, empathy or seeing something afresh. State which you mean and stay with it.","claim"],
+["“Human experience”","Is it individual lived experience (what it was like) or collective experience (what happened to groups over time)? Your choice affects which route looks stronger.","exp"],
+["“Better”","A comparison needs a standard. Candidates: depth, accuracy, emotional access, range of lives covered, or how well an account can be checked.","ctr"],
+["“The artist or the historian”","Treat these as roles with methods, not as two famous people. Roles can overlap, so say what each does at its best and at its weakest.","ex"],
+["“With reference to the arts and history”","Both are areas of knowledge. Write about how each justifies its claims: sources, methods, interpretation, the role of imagination, how others check the work.","link"]],
+note:"In the arts, ask what kind of knowledge is on offer. A work can give insight into experience, not only personal taste. Say what the insight is and how a reader or viewer can test it.",
+extra:[{id:"compare",t:"Artist and historian side by side",h:"--p1",html:'<p class="lead">Use this table to sort your ideas. It is a starting point: most real cases blur these lines, and noticing where is a strength.</p><div class="scroll"><table><tr><th></th><th>The artist</th><th>The historian</th></tr><tr><td><b>Starting point</b></td><td>Experience, imagination, memory, observation</td><td>Surviving sources and a question about the past</td></tr><tr><td><b>Main method</b></td><td>Form, image, voice, symbol, narrative</td><td>Source criticism, context, comparison, argument</td></tr><tr><td><b>Offers</b></td><td>The feel of a life, from inside</td><td>The shape of events, causes and change, from outside</td></tr><tr><td><b>How it is checked</b></td><td>Resonance, craft, comparison with other works and lives</td><td>Evidence, other historians, new sources</td></tr><tr><td><b>Risk</b></td><td>Invention, one viewpoint, distance from the facts</td><td>Gaps in the record, dominant voices, loss of individual feeling</td></tr></table></div>'}],
+par:{defs:"“appreciation” and “human experience”",stance:"which route gives the better appreciation, or what each gives that the other cannot",
+claimHint:"Say what this route lets us appreciate about human experience.",
+explainHint:"Show how the method (imagination and form, or evidence and context) produces that appreciation. Say how the claim can be justified.",
+linkHint:"Link back to “better”: compared with the other route, what does this one add, and what does it miss?",
+counterHint:"Present a limit of this route: what it cannot show, or may distort.",
+cs:["The artist offers appreciation of human experience by …","In [work], we come to appreciate … because …","This route is better for … because …"],
+cc:["However, this route may distort experience because …","The other route can correct this by …, although …","So this route gives a stronger appreciation of …, and a weaker one of …"],
+ci:["I take “appreciation of the human experience” to mean …","I will argue that … gives the better appreciation of … while … gives …"],
+co:["Neither route is better in general. The better route depends on …","This matters because the way we study the past shapes how we …"]},
+lab:["What it offers","How it works","Use in your argument","Limit for your counterclaim"],
+cases:[
+{k:"arts",h:"The arts",x:[
+["Toni Morrison, Beloved (1987)","The inner life of slavery and its aftermath, shaped by the real story of Margaret Garner.","Fiction, memory and the supernatural convey what records leave out.","Access to feeling and lived consequence, not just events.","It is invented, so it cannot be checked as a record."],
+["Käthe Kollwitz, The Grieving Parents (1932)","The grief of parents after the First World War; Kollwitz had lost her own son in 1914.","Sculpture uses posture and weight instead of explanation.","Shows that appreciation can be immediate and bodily.","One image of grief stands for millions and is open to different readings."],
+["Pablo Picasso, Guernica (1937)","Horror and suffering after the bombing of Guernica.","Abstraction and symbol turn a particular attack into a wider cry.","Art can make a distant event felt without narrating it.","It says little about what happened and needs context to read."],
+["Svetlana Alexievich, Voices from Chernobyl (1997)","Many people’s own words after the Chernobyl disaster.","Interview material shaped into a documentary prose work.","A case where art and history overlap; useful for testing your contrast.","Voices are selected and arranged, so the author’s hand is present."],
+["Art Spiegelman, Maus (1980–91)","A son’s record of his father’s survival of the Holocaust.","A graphic memoir uses animal figures and family conversation.","Form makes the unbearable approachable while keeping the personal.","The animal device raises questions about simplifying people and groups."],
+["Wilfred Owen, “Dulce et Decorum Est” (written 1917)","A soldier’s view of a gas attack.","Poetry joins sensory detail to argument.","First-hand experience put into words with force.","One soldier’s view, written to persuade."]]},
+{k:"hist",h:"History",x:[
+["Carlo Ginzburg, The Cheese and the Worms (1976)","The beliefs of a sixteenth-century miller known as Menocchio.","Microhistory reads Inquisition records closely.","Shows that historians can reach one person’s mental world.","The records were made by his accusers, and he is one man."],
+["Studs Terkel, Working (1974)","Workers describe their jobs and their sense of themselves.","Oral history from interviews.","Gives voices that official records often miss.","Memory is selective and the interviewer shapes the material."],
+["South Africa’s Truth and Reconciliation Commission (1996–2002)","Victims’ and perpetrators’ testimony about apartheid-era violence.","Public testimony set beside documents.","Brings personal experience into the public record.","Testimony was shaped by the process, including the amnesty hearings."],
+["E. P. Thompson, The Making of the English Working Class (1963)","How ordinary workers understood and shaped their own lives.","Close reading of diverse sources, with an argument about class.","Shows history recovering lives that were ignored.","It is an interpretation, and sources about workers are thin."],
+["Howard Zinn, A People’s History of the United States (1980)","The national story told from below.","A deliberate choice of viewpoint.","Makes the point that who tells the story changes the appreciation.","Critics say it selects evidence to fit one view."],
+["Fernand Braudel, The Mediterranean (1949)","Long-term patterns of land, trade and climate.","Histories at different time scales.","Appreciation of collective experience across generations.","Individual feeling nearly disappears."]]}],
+pairs:[["Witness against analyst","Whose account is closer to experience, and whose is easier to check?","Owen’s poems; Alexievich"],["Individual against collective","Art on single lives; history on groups and long spans.","Kollwitz; Braudel"],["Invention against evidence","How imagination and records give different kinds of understanding.","Beloved; Ginzburg"],["Where the roles overlap","Works that use research, histories that use narrative.","Alexievich; Terkel; Maus"]],
+pairsTitle:"Ways to compare the two",
+traps:[["“Art is emotional, history is factual.”","This is too simple. Historians interpret and narrate. Artists often research. Test the contrast with real cases."],
+["Treating appreciation as information.","Say what kind of appreciation you mean and why that route supplies it."],
+["Describing without judging.","The title asks which is better. Give a standard and use it."],
+["Summarising a work or an event.","Spend your words on what the case shows about appreciation, not on the plot or the timeline."],
+["Two separate halves.","If the arts and history paragraphs never speak to each other, you have not compared. Link them."],
+["Using two famous people as the whole area.","Write about the method of the area, and use the person as a case."]],
+tips:["Keep “better appreciation” in view in every paragraph, and explain the area’s method of justifying claims.","Choose cases where you can say how the appreciation arises. Then say what follows for how we should study or remember human lives.","Give each area a real limit, and weigh it. A strong essay concludes with a qualified judgement, not a draw."],
+chk:"I state the standard I use for “better” and apply it to both areas."},
+
+/* ---------------- 2 ---------------- */
+{id:"p2",vid:"L-udmzgZVas",n:2,short:"Values that change",
+q:"If values change over time, how can they, nevertheless, continue to guide the pursuit of knowledge? Discuss with reference to two areas of knowledge.",
+meta:"May 2027 session · 1,600 words maximum · two areas of knowledge of your choice",
+ar:["First area","Second area"],ak:["nat","hum"],
+job:"show how a value that can be revised still shapes what researchers ask, do and accept, then judge how dependable that guidance is.",
+idea:[["Name the value","Say which value matters and what it governs: what is worth asking, what is acceptable to do, or what is reasonable to believe.","claim"],
+["Show the change","Give a specific case where the value, its priority or its application changed. Be exact about which one.","ex"],
+["Explain the route","Show who applies the value, which decision it affects, and why it still steers inquiry even though it can be revised.","exp"],
+["Test the limits","Ask when the guidance is late, uneven, enforced badly or aimed at a narrow goal. Then judge how far it still counts as guidance.","ctr"]],
+terms:[["“If values change”","Accept the premise and work with it. Do not spend the essay proving that values change. Focus on what changed in a real case.","claim"],
+["“Nevertheless”","This word names the difficulty. If a community revises what it counts as important or acceptable, how can researchers still use those values to make decisions now?","ctr"],
+["“Guide”","Guiding does not mean determining every decision. Values can set priorities, rule out methods or help judge competing conclusions. Researchers can share a commitment and still disagree about how to apply it.","exp"],
+["“The pursuit of knowledge”","Stay with how fields choose questions, run investigations and judge claims. Changing personal opinions alone will not explain how a field produces knowledge.","ex"]],
+note:"A new rule is not always a new value. Ask whether your case shows a changed commitment, a changed priority, or a different way of applying the same commitment. Your conclusion should match the evidence.",
+extra:[{id:"jobs",t:"Three jobs a value can do",h:"--r-exp",html:'<div class="grid"><div class="card tint s-claim"><h3>It shapes what is worth asking</h3><p>Example: history turning toward the lives of ordinary workers.</p></div><div class="card tint s-link"><h3>It limits what is acceptable to do</h3><p>Example: consent requirements for research with human participants.</p></div><div class="card tint s-int"><h3>It sets what is reasonable to believe</h3><p>Example: what mathematicians accept as a proof.</p></div></div><p class="lead">These do not always change together. A field can revise its rules about consent while keeping its commitment to careful evidence. Say which one changes in your example and which stays more stable.</p>'},
+{id:"origins",t:"Where values come from",h:"--r-imp",html:"__ORIG__"}],
+par:{defs:"“values” (what is worth asking, what is acceptable to do, what is reasonable to believe) and “guide”",stance:"how guidance continues despite change",
+claimHint:"Name the value and how it guides.",
+explainHint:"Show the route from value to action. Which value changed and which stayed? Who applies it? Which decision does it affect?",
+linkHint:"Connect back to “nevertheless”: why does the guidance continue even though the value can be revised?",
+counterHint:"Present a serious opposing view for this area: values guiding poorly, late or not at all.",
+cs:["In [area], a changing value can still guide inquiry when …","The value that changed was …, while the value that stayed was …","This shows how guidance works: [who] applies [value] to [decision]."],
+cc:["However, this may overstate how reliably values guide, because …","This weakens my claim, but it does not remove guidance, because …","I therefore qualify my claim: values guide best when …"],
+ci:["I take “values” to mean commitments that shape what is worth asking, what is acceptable to do, and what is reasonable to believe.","I will argue that values continue to guide because …"],
+co:["Values can continue to guide the pursuit of knowledge when …","A field’s health may depend less on keeping values fixed than on …"]},
+lab:["Value","What changed","How it still guides","Limit for your counterclaim"],
+cases:A2,
+pairs:[["Natural sciences + History","Values guide through institutional standards in one, and by redirecting questions in the other.","Declaration of Helsinki; E. P. Thompson"],["Mathematics + Human sciences","Standards of proof against priorities such as reliability and openness.","Four-colour theorem and Flyspeck; replication projects"],["Natural sciences + Human sciences","Both use ethics committees and codes. Test whether the same explanation holds in both.","Helsinki; Tuskegee and the Belmont Report"],["The arts + any other","Guidance through public disagreement about standards. Say what knowledge the arts pursue and how the disputed value guides it.","Salon des Refusés; Nochlin (1971)"],["History + Human sciences","Whose lives and voices count, and how evidence is gathered about them.","Oral history; WEIRD samples; Writing Culture"]],
+pairsTitle:"Pick your two areas",
+traps:[["“Values never really change.”","This dodges the question. If you name a stable value, show how it helps people respond to the values that do change."],
+["“Changing values cannot guide.”","This needs an argument. Explain why revision would prevent guidance in the case you examine."],
+["A list of changing rules.","Show what changed in researchers’ decisions, and why."],
+["“Values guide, but values change.”","This only repeats the difficulty in the title."],
+["Confusing a new rule with a new value.","A new procedure may apply an old value more effectively."],
+["Treating values as personal virtues.","Connect each commitment to the shared practices through which knowledge is produced."],
+["“Values changed, then research changed.”","That is only a sequence. Explain how the changed value produced the changed decision."]],
+tips:["Keep “how can values continue to guide?” in every paragraph, not only the introduction. Link each area to the title through its methods, institutions or practices.","Use named, dated cases and explain the route from value to decision. To reach the top band, state what follows from your arguments.","Each area needs a real counterclaim that you evaluate. Judge whether each one survives, needs a qualification or should be rejected."],
+chk:"I say which value changed and which stayed, and I do not treat a new rule as a new value."},
+
+/* ---------------- 3 ---------------- */
+{id:"p3",vid:"Vh4xWmitH8w",n:3,short:"Knowledge built on assumptions",
+q:"In the production of knowledge, how can knowledge be reliable if it is built on assumptions? Discuss with reference to the human sciences and one other area of knowledge.",
+meta:"May 2027 session · 1,600 words maximum · the human sciences are set; choose one other area",
+ar:["Human sciences","Your second area"],ak:["hum","math"],
+job:"show where assumptions enter the making of knowledge, explain what makes that knowledge dependable anyway, and judge when it stops being dependable.",
+idea:[["Name the assumption","What is taken for granted in this case: about people, samples, instruments, definitions or starting rules?","claim"],
+["Show where it enters","Find the step where the assumption shapes the method, the data or the conclusion.","ex"],
+["Explain what keeps it reliable","Testing, replication, peer review, cross-checking, or the ability to revise when an assumption fails.","exp"],
+["Judge the limit","When does an assumption undermine reliability? Look for cases where a hidden assumption went wrong.","ctr"]],
+terms:[["“Assumptions”","Things taken as true without being shown in this inquiry. They may be stated, like axioms, or hidden, like who is in a sample.","claim"],
+["“Built on”","A foundation or a background condition? Ask whether the knowledge would collapse if the assumption were removed, or only need a small change.","exp"],
+["“Reliable”","Dependable: results that can be repeated, checked or used to predict. Reliable is not the same as true. A reliable method can still rest on a false assumption.","link"],
+["“How can”","The title asks for a mechanism. Explain what makes knowledge dependable, not only that it sometimes is.","ex"],
+["“Production of knowledge”","Look at methods and communities that make claims, not only the finished claims.","ctr"]],
+note:"Do not argue that all knowledge is equally unreliable because every field has assumptions. Compare assumptions: some are tested, some are tested only by their consequences, and some cannot be tested from within.",
+extra:[{id:"types",t:"Kinds of assumption",h:"--p3",html:'<div class="grid"><div class="card tint s-claim"><h3>Stated and hidden</h3><p>Axioms and model assumptions are stated. Sampling habits and cultural background often are not. Hidden ones are harder to correct.</p></div><div class="card tint s-ex"><h3>Foundation and background</h3><p>Some assumptions hold up the whole argument. Others only sit in the background and can be changed with little damage.</p></div><div class="card tint s-exp"><h3>Testable and untestable</h3><p>Some can be checked against data. Others can be judged only by what follows from them.</p></div><div class="card tint s-link"><h3>Shared and local</h3><p>Some are shared across a field. Others belong to one study or one research group.</p></div></div>'}],
+par:{defs:"“assumption” and “reliable”",stance:"what makes knowledge reliable when it rests on assumptions",
+claimHint:"Name the assumption and say what keeps the knowledge reliable despite it.",
+explainHint:"Show where the assumption enters the method, and the mechanism (testing, replication, revision, proof from axioms) that supports reliability.",
+linkHint:"Connect back to “how can”: why does the knowledge remain reliable, and for what uses?",
+counterHint:"Present a case where an assumption weakened reliability: a hidden assumption, an untestable one, or one that failed.",
+cs:["In [area], knowledge can be reliable despite the assumption that … because …","The assumption enters when …, and it is checked by …","So reliability here means …"],
+cc:["However, the assumption that … undermined reliability because …","This does not remove reliability altogether, because …","I therefore qualify my claim: knowledge built on assumptions is reliable when …"],
+ci:["By “assumption” I mean … and by “reliable” I mean …","I will argue that reliability depends on whether assumptions can be …"],
+co:["Knowledge built on assumptions can be reliable when …","This matters because users of knowledge should ask …"]},
+lab:["Assumption","Where it enters","What keeps it reliable","Limit for your counterclaim"],
+cases:[
+{k:"hum",h:"Human sciences",x:[
+["The rational-actor model in economics","People act to maximise their own interests.","It underlies predictions about prices, markets and choices.","Tested against data and revised: behavioural economics added psychological findings such as Kahneman and Tversky’s prospect theory (1979).","Where the assumption fails, predictions fail, and this is hard to see before testing."],
+["WEIRD samples (Henrich, Heine and Norenzayan, 2010)","That results from Western, educated, industrialised, rich, democratic participants apply to people in general.","Much psychology relied on university students in a few countries.","Cross-cultural replication shows when findings travel and when they do not.","Findings may be less general than they looked, and some fields are slow to correct."],
+["Literary Digest poll (1936)","That a very large sample of people drawn from lists of phone and car owners represents all voters.","The magazine predicted a win for Landon from over two million replies; Roosevelt won.","Gallup’s much smaller, representative sample was closer, which shows representativeness matters more than size.","The error was invisible from inside the poll, and only the result exposed it."],
+["Replication projects in psychology (Open Science Collaboration, 2015)","That a published significant result reflects a real effect.","Many published findings rest on single studies and small samples.","Large replications now check the assumption and change publication practice.","Many findings did not replicate as strongly as first reported, which shows how much the assumption carried."],
+["Berkeley graduate admissions (Bickel, Hammel and O’Connell, 1975)","That overall figures reflect what happens in each department.","Combined data suggested bias against women; department figures told a different story.","Breaking the data down tests the assumption.","The analyst has to choose the level of analysis, and the choice affects the conclusion."],
+["Margaret Mead and Derek Freeman on Samoa (1928; 1983)","That informants’ accounts and the researcher’s reading give a true picture.","Mead’s account of adolescence was later challenged by Freeman.","Re-study, comparison and critique test fieldwork claims.","The disagreement is still debated, which shows how hard it is to settle interpretive assumptions."]]},
+{k:"math",h:"Mathematics",x:[
+["Euclid’s parallel postulate and non-Euclidean geometry","That through a point outside a line there is exactly one parallel.","Euclid took it as an axiom; in the nineteenth century Bolyai and Lobachevsky built consistent geometries without it.","Theorems are reliable given the axioms, and changing axioms gives new reliable systems.","Mathematics tells you what follows, not which geometry fits physical space."],
+["The axiom of choice","That a choice can be made from every collection of non-empty sets.","Gödel (1938) and Cohen (1963) showed it is independent of the other axioms of set theory.","Mathematicians state clearly when a result needs it.","It cannot be proven from the other axioms, and it leads to strange results such as Banach–Tarski."],
+["Gödel’s incompleteness theorems (1931)","That a rich enough system can prove all its own truths and its own consistency.","Gödel showed this is not possible for consistent systems that include arithmetic.","Reliability is relative to chosen axioms and open to proofs in a stronger system.","The foundations cannot be shown secure from within the system."],
+["Russell’s paradox (1901)","That any property defines a set.","It produced a contradiction in naive set theory.","The assumption was replaced by more careful axioms such as Zermelo–Fraenkel set theory.","The fix is chosen to avoid known paradoxes; there is no proof that no others remain."]]},
+{k:"nat",h:"Natural sciences",x:[
+["Uniformity of nature","That the laws we observe hold in places and times we have not observed.","Every prediction and experiment uses it.","Repeated success over a huge range of conditions supports it.","Hume’s problem of induction: past success does not prove it for the future."],
+["Neptune and Vulcan","That Newtonian gravity applies without exception.","Le Verrier used it to predict Neptune (found in 1846) and a planet, Vulcan, inside Mercury’s orbit.","The Neptune prediction succeeded; the Vulcan one did not, and general relativity (1915) explained Mercury instead.","The same assumption gave one success and one failure."],
+["Faster-than-light neutrinos (OPERA, 2011)","That the timing equipment was working as assumed.","The team reported neutrinos arriving earlier than light would.","Further checks found a loose fibre-optic connection and a clock problem.","It took public scrutiny to expose the hidden assumption about instruments."],
+["Radiocarbon dating","That the amount of carbon-14 in the atmosphere stayed constant.","It enters every age calculation.","Calibration against tree rings and other records corrects the assumption.","Calibration needs further assumptions, and ages are given with a range."]]},
+{k:"hist",h:"History",x:[
+["The Hitler Diaries (1983)","That a document that looks old and fits expectations is genuine.","Some experts and a magazine accepted the diaries as authentic.","Forensic testing of paper and ink showed they were forgeries.","Reliability depended on a check that was done late."],
+["Oral history","That memory gives an accurate account of the past.","Interview accounts are used to recover lives that records ignore.","Cross-checking against documents and other accounts tests the memories.","Memory changes over time, so the assumption is partly false by design."]]}],
+pairs:[["Human sciences + Mathematics","Assumptions as stated axioms against assumptions about people and samples.","Euclid and non-Euclidean geometry; Literary Digest"],["Human sciences + Natural sciences","How assumptions about instruments and laws differ from assumptions about people.","OPERA; WEIRD samples"],["Human sciences + History","Assumptions about sources, memory and informants.","Hitler Diaries; Mead and Freeman"],["Human sciences + The arts","Assumptions in interpretation. Say what knowledge the arts produce.","Check with your teacher before choosing"]],
+pairsTitle:"Pick your second area",
+traps:[["“Everything rests on assumptions, so nothing is reliable.”","This ignores the question of how. Compare assumptions and show how some are checked."],
+["Confusing assumption with bias.","Bias is a distortion. An assumption is a starting point that may or may not distort."],
+["Not defining “reliable”.","Say whether you mean repeatable, predictive or consistent, and keep to it."],
+["Treating reliable as true.","Methods can be reliable and still wrong. Say what you mean."],
+["Only listing assumptions.","Explain what makes the knowledge dependable, which is what the title asks."],
+["A counterclaim that restates the claim.","Use a case where an assumption failed, then say what that does to your argument."]],
+tips:["Keep “reliable” and “assumption” in every paragraph. Link each area through the method it uses to check or live with its assumptions.","Name the exact assumption, show where it enters, and explain the mechanism that supports reliability. State what follows for how we should treat such knowledge.","Use failures as well as successes. Evaluate each: does reliability survive, need qualifying, or fall?"],
+chk:"I define “reliable” and keep it separate from “true”."},
+
+/* ---------------- 4 ---------------- */
+{id:"p4",vid:"ECsNJHWNaz4",n:4,short:"Agatha Christie on coincidence",
+q:"To what extent do you agree with the claim that “any coincidence is worth noticing; you can throw it away later if it is only a coincidence” (Agatha Christie). Answer with reference to mathematics and one other area of knowledge.",
+meta:"May 2027 session · 1,600 words maximum · mathematics is set; choose one other area",
+ar:["Mathematics","Your second area"],ak:["math","nat"],
+job:"judge when noticing a coincidence helps to produce knowledge, what lets us discard it later, and when that discarding fails or costs too much.",
+idea:[["Define coincidence","A pattern or link with no known connection. Decide what would count as “only a coincidence” in your area.","claim"],
+["Show it paying off","A case where noticing a coincidence led to knowledge. Say what turned it from a hint into a result.","ex"],
+["Show it misleading","A pattern that vanished, or an explanation that was wrong. Say why it was convincing.","ctr"],
+["Judge “to what extent”","Agree with some part and not others. What makes “throw it away later” possible, and when is it not?","exp"]],
+terms:[["“Coincidence”","An apparent link with no known cause. Decide whether you mean the pattern or the lack of a cause, and keep the meaning steady.","claim"],
+["“Any … worth noticing”","“Any” is strong. Noticing costs attention and time. When is it worth paying?","ctr"],
+["“Throw it away later”","This assumes a reliable way to discard. What is it in your area: a proof, a replication, a statistical test, a source check?","exp"],
+["“If it is only a coincidence”","How do we know? Failing to find a link is not proof that there is none.","link"],
+["“To what extent”","Expect a qualified answer. A judgement that holds in some conditions and fails in others is stronger than flat agreement.","ex"]],
+note:"Christie’s line comes from detective fiction, so use it as a claim about method. Ask whether detectives, mathematicians and scientists really work this way, and what the line leaves out.",
+extra:[{id:"flow",t:"Notice, test, keep or discard",h:"--p4",html:'<div class="steps"><div class="card tint step s-claim"><h3>Notice</h3><p>Something recurs or fits. Attention is directed to it.</p></div><div class="card tint step s-ex"><h3>Test</h3><p>Look for a mechanism, a proof, a repeat, or a check against chance.</p></div><div class="card tint step s-exp"><h3>Decide</h3><p>Keep it as knowledge, hold it as a hypothesis, or discard it.</p></div><div class="card tint step s-ctr"><h3>Count the cost</h3><p>Time spent, false hopes, and what else could have been noticed.</p></div></div>'}],
+par:{defs:"“coincidence” and what it means to “throw it away”",stance:"how far noticing coincidences helps produce knowledge",
+claimHint:"State how noticing a coincidence helped in this area and what made it useful.",
+explainHint:"Show what turned the coincidence into knowledge: a proof, an explanation, a test. Explain how the discarding step works in this area.",
+linkHint:"Connect back to Christie’s claim: does this case support “any coincidence is worth noticing”?",
+counterHint:"Present a case where a coincidence misled, wasted effort or could not be discarded easily.",
+cs:["In [area], noticing the coincidence that … led to … because …","What turned a hint into knowledge was …","This supports Christie’s claim because …"],
+cc:["However, the coincidence that … misled because …","Throwing it away was hard because …","So “any coincidence” overstates the case: noticing pays when …"],
+ci:["By “coincidence” I mean …, and I take “throw it away” to mean …","I will argue that noticing coincidences is worthwhile when …"],
+co:["I agree with Christie to the extent that …, but not when …","This matters because the same habit of mind that finds discoveries also finds …"]},
+lab:["The coincidence","What came of noticing it","How it was tested or discarded","Limit for your counterclaim"],
+cases:[
+{k:"math",h:"Mathematics",x:[
+["Monstrous moonshine (1970s)","John McKay noticed that 196884, a number from the j-function, equals 196883 + 1, where 196883 is the smallest non-trivial representation of the Monster group.","Conway and Norton formulated a conjecture; Borcherds proved it (1992) and won a Fields Medal in 1998.","Proof settled it. The coincidence was kept only once a proof explained it.","Few such coincidences end in proof, and years of work were needed."],
+["Euler’s polynomial n² + n + 41","It gives primes for n = 0 to 39.","It suggests a rule for generating primes.","Checking n = 40 gives 41², which is not prime.","A long run of cases is not a proof, and “later” came at n = 40."],
+["Pólya’s conjecture","A pattern about the parity of prime factors held for every number checked up to hundreds of millions.","It was believed on the evidence.","A counterexample exists; the smallest is 906,150,257 (found by Tanaka in 1980).","Huge amounts of checking did not decide the matter."],
+["e^(π√163) ≈ 262537412640768744","This number is extremely close to a whole number.","It looks like an accident.","Complex multiplication and the fact that 163 is a Heegner number explain the near-integer.","A coincidence at first, then explained, so it was worth the attention."],
+["The birthday problem","With 23 people the chance that two share a birthday is just over 50 per cent.","Shows that coincidences in groups are more common than intuition suggests.","Probability tells you how surprising a coincidence is.","If coincidences are common, “any” is too many to pursue."],
+["Fermat numbers","2^(2^n) + 1 is prime for n = 0 to 4, so Fermat guessed it is always prime.","The pattern looked like a law.","Euler showed that n = 5 gives a composite number (1732).","A small sample gave a false generalisation."],
+["The Collatz conjecture","Repeating “halve if even, triple and add one if odd” seems always to reach 1.","The pattern has been checked for extremely large starting values.","No proof exists.","Noticing is easy; the “throw it away later” step may never come."]]},
+{k:"nat",h:"Natural sciences",x:[
+["Penzias and Wilson (1964–65)","A persistent hiss in a horn antenna at Bell Labs.","They checked equipment, even removing pigeon droppings, before taking it seriously.","It was identified as cosmic microwave background radiation, and they shared the 1978 Nobel Prize in Physics.","They nearly treated it as noise, and the larger meaning came from other physicists."],
+["Fleming and penicillin (1928)","Bacteria cleared around a mould that had contaminated a dish.","Fleming followed it up and named the effect.","Later chemists, notably Florey and Chain, turned it into a drug.","Noticing was not enough; the work of making it useful took years."],
+["Wegener and continental drift (1912)","The coastlines of Africa and South America fit, and matching fossils appear on both.","He proposed that continents move.","It was mostly rejected until sea-floor spreading and plate tectonics in the 1960s.","The coincidence was worth noticing but could not be tested for decades."],
+["BICEP2 (2014)","Researchers reported a signal in the cosmic microwave background that matched gravitational waves from early cosmic inflation.","It was announced as a major discovery.","Analysis with Planck satellite data in 2015 showed that galactic dust could explain the signal.","Excitement ran ahead of testing."]]},
+{k:"hum",h:"Human sciences",x:[
+["The hot hand in basketball (Gilovich, Vallone and Tversky, 1985)","Fans and players see streaks of scoring.","The researchers found no evidence of streaks in shooting records.","Later re-analysis (Miller and Sanjurjo, 2018) found a small hot-hand effect.","Even “discarded” patterns may come back with better statistics."],
+["Berkeley admissions (1973)","Overall figures appeared to show bias against women.","Department-level figures showed a different picture.","Analysing at a different level explained the pattern.","Whether noticing led to a right or wrong conclusion depended on the level of analysis."],
+["Spurious correlations","Two unrelated series, such as cheese consumption and deaths by tangled bedsheets, move together.","Websites collect many such cases.","Statistical thinking shows that with many variables some pairs will match by chance.","Noticing every pattern in large data sets produces false leads."],
+["Apophenia (Klaus Conrad, 1958)","The tendency to see meaningful connections in unrelated things.","Psychologists study it as part of how people perceive patterns.","Controls and tests are designed to guard against it.","Human pattern-seeking can mislead before any checking starts."]]},
+{k:"hist",h:"History",x:[
+["Linear B (Alice Kober and Michael Ventris, 1950s)","Repeating word endings in the tablets suggested a language with inflections.","Kober’s analysis of the patterns prepared the ground; Ventris showed in 1952 that the language was Greek.","Reading the tablets tested the idea: sensible Greek came out.","The work took years of patient checking, not a flash of insight."],
+["Lincoln–Kennedy coincidences","Lists of parallels between the two presidents circulate widely.","They are repeated as if meaningful.","Checking shows many are wrong, forced or too vague to count.","A case where noticing wins attention but discarding is the better move."],
+["Richard III’s remains (2012)","Philippa Langley felt drawn to a spot in a Leicester car park that was marked “R”.","The excavation found a skeleton.","DNA and other evidence identified it as Richard III.","A lucky hunch turned out right, but without the dig and the tests it would be only a story."]]}],
+pairs:[["Mathematics + Natural sciences","Proof as the discarding step, against experiment and repeat measurement.","Moonshine; Penzias and Wilson; BICEP2"],["Mathematics + Human sciences","Exact proof against statistical tests of chance.","Hot hand; birthday problem"],["Mathematics + History","Noticing patterns in numbers against patterns in sources.","Linear B; Euler’s polynomial"],["Mathematics + The arts","Patterns in form. Say what knowledge the arts offer.","Check with your teacher before choosing"]],
+pairsTitle:"Pick your second area",
+traps:[["Simply agreeing or disagreeing.","“To what extent” wants a qualified view: where the claim holds and where it fails."],
+["A list of lucky discoveries.","Survivor bias: successes are remembered, wasted effort is not. Say so."],
+["Treating all coincidences alike.","Some are explained, some are chance, some stay open. Distinguish them."],
+["Ignoring the “throw away” step.","Show how discarding works in your area and how reliable it is."],
+["Using the quote as a plot detail.","Use it as a claim about method in knowledge, not about detective stories."],
+["Not defining “coincidence”.","Say what counts, and keep to it."]],
+tips:["Link every paragraph to Christie’s claim and to the word “worth”. Show how each area notices, tests and discards.","Use specific, accurate cases and explain what turned the coincidence into knowledge or into an error. Say what follows for how we should treat patterns.","Give each area a real counterclaim, then evaluate. A balanced “to what extent” judgement with conditions earns more than flat agreement."],
+chk:"I say how the “throw it away later” step works in each area and how reliable it is."},
+
+/* ---------------- 5 ---------------- */
+{id:"p5",vid:"0SjD80utx3U",n:5,short:"Simplicity in explanation",
+q:"In the production of knowledge, when choosing one explanation over another, to what extent should simplicity be prioritized? Discuss with reference to two areas of knowledge.",
+meta:"May 2027 session · 1,600 words maximum · two areas of knowledge of your choice",
+ar:["First area","Second area"],ak:["nat","hist"],
+job:"judge how much weight simplicity deserves when explanations compete, and what else should count alongside it.",
+idea:[["Define simplicity","Fewer assumptions, fewer entities, simpler equations, or easier to understand? Choose the sense you will use.","claim"],
+["Show it helping","A case where the simpler explanation was rightly chosen, and say why.","ex"],
+["Show it misleading","A case where the simpler explanation lost to a more complex one, or a simple explanation was wrong.","ctr"],
+["Rank the criteria","Compare simplicity with evidence, predictive power and scope. Say when it should come first, and when it should not.","exp"]],
+terms:[["“Simplicity”","A word with several senses: parsimony (fewer entities), simple form (short laws), elegance and ease of understanding. They can pull apart.","claim"],
+["“Prioritized”","Ranked above other criteria. Ask what else is on the list: evidence, predictive power, scope, consistency with other knowledge.","exp"],
+["“Choosing one explanation over another”","This happens when explanations fit the data about equally well. Say what the rivals are in your case.","ex"],
+["“Production of knowledge”","Look at how communities decide, not only at the final theory.","link"],
+["“To what extent”","Expect a qualified judgement: simplicity as a tie-breaker, a guide, or a trap.","ctr"]],
+note:"Simplicity is rarely the only criterion in any real choice. A good essay shows what else was on the scale and why simplicity won or lost.",
+extra:[{id:"kinds",t:"Four kinds of simplicity",h:"--p5",html:'<div class="grid"><div class="card tint s-claim"><h3>Parsimony</h3><p>Fewer kinds of thing assumed to exist, as in Ockham’s razor.</p></div><div class="card tint s-ex"><h3>Simple form</h3><p>Shorter laws, fewer parameters, simpler equations.</p></div><div class="card tint s-exp"><h3>Elegance</h3><p>A sense of beauty or unity in the explanation. It is an aesthetic judgement.</p></div><div class="card tint s-link"><h3>Ease of understanding</h3><p>Simple for people to grasp and use, which differs from being simple in the world.</p></div></div>'}],
+par:{defs:"“simplicity” and the other criteria it competes with",stance:"how much weight simplicity should carry",
+claimHint:"Say how simplicity helped or should help in this area’s choice between explanations.",
+explainHint:"Show what the rivals were, in what sense one was simpler, and what actually decided the choice.",
+linkHint:"Connect back to “prioritized”: what ranking of criteria does this case support?",
+counterHint:"Present a case where simplicity misled, or where a more complex explanation won.",
+cs:["In [area], simplicity helped decide between … and … because …","The explanation was simpler in the sense that …","This supports giving simplicity priority when …"],
+cc:["However, simplicity misled when …","The more complex explanation was preferred because …","So simplicity should be prioritised only when …"],
+ci:["By “simplicity” I mean …","I will argue that simplicity should be prioritised …, but not when …"],
+co:["To a limited extent: simplicity should be prioritised when …, and not when …","This matters because the way a community weighs simplicity shapes what it …"]},
+lab:["Simpler explanation","Rival or richer explanation","What decided it","Limit for your counterclaim"],
+cases:[
+{k:"nat",h:"Natural sciences",x:[
+["Copernicus against Ptolemy","The Sun-centred system explained retrograde motion without the large epicycles.","The Earth-centred system had been refined for centuries to match observations.","Copernicus still used small epicycles, and predictive accuracy was not clearly better until Kepler.","Simplicity was an argument, not a proof, and the evidence took time."],
+["Kepler’s ellipses (1609)","Circles are the simplest and most perfect orbits.","Kepler found ellipses fitted Tycho Brahe’s data; a discrepancy of eight arcminutes in Mars’s position was too large to ignore.","He gave up the circle for the ellipse.","Evidence outweighed simplicity of form, though the ellipse produced simpler laws overall."],
+["Newtonian gravity and general relativity","Newton’s theory is simpler and works for most purposes.","Einstein’s theory explains Mercury’s orbit and light bending.","Evidence led scientists to prefer the more complex theory.","The simpler theory is still used where it is accurate enough."],
+["Dark matter and modified gravity (MOND, Milgrom 1983)","Modifying gravity is a compact way to describe galaxy rotation.","Dark matter explains rotation, clusters and the cosmic microwave background, at the price of an unseen substance.","Most physicists favour dark matter because it fits more kinds of data.","Both options add something, so “simpler” depends on what you count."]]},
+{k:"hist",h:"History",x:[
+["The fall of the Western Roman Empire","A single cause, such as decline from within or invasion.","Multi-causal accounts bring in economics, politics, military pressure and chance.","Historians generally accept that several factors interacted.","A single cause is easy to remember but easy to challenge."],
+["The origins of the First World War","Fritz Fischer’s thesis (1961) stressed German war aims.","Christopher Clark’s The Sleepwalkers (2012) described many actors and miscalculations.","The debate continues; neither account is accepted by all.","A clear story can hide complex responsibility."],
+["The French Revolution","A social interpretation in terms of class conflict.","Revisionists such as Alfred Cobban and François Furet stressed politics, ideas and contingency.","The field moved away from a single social explanation.","A neat theory can fail when tested against detailed evidence."]]},
+{k:"math",h:"Mathematics",x:[
+["Erdős’s “Book” of proofs","Erdős imagined a book where God keeps the most elegant proof of each theorem.","Euclid’s proof of the infinitude of primes is a common example.","Mathematicians value elegance, and a shorter proof can reveal more.","Elegance does not decide truth, and many results lack an elegant proof."],
+["Elementary proofs of the prime number theorem (Erdős and Selberg, 1949)","Avoiding complex analysis was seen as a gain.","Earlier proofs used complex analysis.","“Elementary” did not mean short or easy to follow.","Simplicity in method and simplicity in understanding differ."],
+["The four-colour theorem (1976)","Simple to state.","The proof by Appel and Haken relied on a computer check of many cases.","The result is accepted, though many mathematicians wanted a human-readable proof.","The simple statement hides a long proof."],
+["Wiles and Fermat’s Last Theorem (1994–95)","The statement can be understood by a school student.","The proof uses advanced modern mathematics.","Truth was not tied to how simple the statement looks.","Simple statements can need very complex proofs."]]},
+{k:"hum",h:"Human sciences",x:[
+["Milton Friedman’s “as if” defence (1953)","Simple models with unrealistic assumptions can still predict well.","More realistic models are more complicated.","The test is predictive success, not realism.","Critics say predictive success may be luck, and an unrealistic model may mislead."],
+["Prospect theory (Kahneman and Tversky, 1979)","Expected utility theory is simple and elegant.","Prospect theory fits how people actually choose, with reference points and loss aversion.","Evidence led to a more complex theory.","More complex models fit more, but risk fitting noise."],
+["Behaviourism and the cognitive revolution","Skinner’s stimulus–response account is simple.","Chomsky’s 1959 review argued that it could not explain language.","The field turned to cognitive explanations.","A simple account can leave out what you most want to explain."],
+["Why Nations Fail (Acemoglu and Robinson, 2012)","One main factor, institutions, explains differences in wealth.","Rivals such as Jared Diamond stress geography and others stress culture.","The debate continues.","A single-factor theory is tidy but may be too narrow."]]}],
+pairs:[["Natural sciences + History","Simplicity in laws against simplicity in narrative.","Kepler; origins of the First World War"],["Natural sciences + Mathematics","Simplicity of theory against elegance of proof.","Copernicus; Erdős’s Book"],["Natural sciences + Human sciences","Simple models in physics and in economics or psychology.","Newton and Einstein; Friedman"],["History + Human sciences","Single-cause and many-cause explanations of events and behaviour.","Roman Empire; Why Nations Fail"],["Mathematics + Human sciences","Elegance and the demand for realism.","Four-colour theorem; prospect theory"]],
+pairsTitle:"Pick your two areas",
+traps:[["Saying “Ockham’s razor” without explaining it.","Name the sense of simplicity and show how it worked in a case."],
+["Treating simple as true.","Simplicity is a reason to prefer an explanation, not a guarantee."],
+["Only showing cases where simplicity won.","Include one where it lost or misled."],
+["Ignoring the other criteria.","Evidence, predictive power and scope also matter. Compare them."],
+["Confusing simple to state with simple to prove.","Distinguish the kinds of simplicity."],
+["Vague “extent”.","Say when simplicity should be prioritised and when not."]],
+tips:["Keep “prioritized” in view: rank simplicity against other criteria in each area. Link each area to the title through how its community chooses between explanations.","Use cases where you can name the rivals and say what decided the choice. State the consequence for how a field should weigh simplicity.","Give a real counterclaim in each area, then weigh it. A conditional ranking is stronger than a blanket yes or no."],
+chk:"I define the sense of simplicity I use and name the rival explanations in each case."},
+
+/* ---------------- 6 ---------------- */
+{id:"p6",vid:"3b-iYzaATHw",n:6,short:"The paradoxical and the counterintuitive",
+q:"In the pursuit of knowledge, what value is there in exploring the paradoxical or the counterintuitive? Discuss with reference to the natural sciences and one other area of knowledge.",
+meta:"May 2027 session · 1,600 words maximum · the natural sciences are set; choose one other area",
+ar:["Natural sciences","Your second area"],ak:["nat","math"],
+job:"explain what exploring a paradox or a surprising claim can give a field, and judge when the effort pays and when it does not.",
+idea:[["Separate the terms","A paradox seems contradictory. A counterintuitive claim clashes with intuition. Some paradoxes are real tensions, some dissolve, and some counterintuitive claims are true.","claim"],
+["Show the value","What did exploring it produce: a new theory, a sharper concept, a method, a correction of a hidden assumption?","ex"],
+["Show the cost or limit","When did exploring it waste effort, or lead to a false claim?","ctr"],
+["Judge the value","Say what kinds of value there are and which matter most in each area.","exp"]],
+terms:[["“Value”","Value for what? Discovery, justification, understanding, caution. Name the kinds you use.","claim"],
+["“Paradoxical”","Apparently contradictory. A paradox may be resolved, may expose a flaw in reasoning, or may point to a limit of a concept.","exp"],
+["“Counterintuitive”","Contrary to common expectation. This may be true (a surprising result) or false (a mistaken claim that sounds clever).","ex"],
+["“Exploring”","Taking it seriously and investigating, not just noticing. Say what exploring involved in the case.","link"],
+["“The pursuit of knowledge”","Look at how a field proceeds, not only what it has found.","ctr"]],
+note:"Be careful: counterintuitive is not the same as true, and a paradox is not a proof. Show how the surprise was tested, and say what the exploring added.",
+extra:[{id:"kinds",t:"What a paradox can do",h:"--p6",html:'<div class="grid"><div class="card tint s-claim"><h3>Expose a hidden assumption</h3><p>The tension shows what everyone was taking for granted.</p></div><div class="card tint s-ex"><h3>Drive a new theory</h3><p>A puzzle that old ideas cannot solve calls for new ones.</p></div><div class="card tint s-exp"><h3>Sharpen a concept</h3><p>Working on a paradox forces a clearer definition.</p></div><div class="card tint s-ctr"><h3>Mislead or distract</h3><p>Some surprises dissolve, and some are errors that sound profound.</p></div></div>'}],
+par:{defs:"“paradoxical”, “counterintuitive” and “value”",stance:"what exploring the surprising gives, and when it does not pay",
+claimHint:"Say what value exploring the paradox or surprise had in this area.",
+explainHint:"Show how the exploring produced the value: what was investigated, what was found or clarified, and who benefited.",
+linkHint:"Connect back to “value”: what kind of value is it, and is it specific to this area?",
+counterHint:"Present a case where exploring led nowhere, misled or was a distraction.",
+cs:["In [area], exploring the paradox of … led to …","This was valuable because it …","The surprise exposed the assumption that …"],
+cc:["However, exploring … cost … and produced …","Not every surprising claim deserves attention, because …","So the value of exploring depends on …"],
+ci:["I take “paradoxical” to mean … and “counterintuitive” to mean …","I will argue that exploring these is valuable when …"],
+co:["Exploring the paradoxical or counterintuitive is valuable when …, but not when …","This matters because a field that avoids surprises may …"]},
+lab:["The paradox or surprise","What exploring it produced","Why it was valuable","Limit for your counterclaim"],
+cases:[
+{k:"nat",h:"Natural sciences",x:[
+["Entanglement: Einstein, Podolsky and Rosen (1935), Bell (1964), Aspect (1982)","Quantum theory seemed to allow linked particles to affect each other across distance.","Bell showed that the question could be tested; experiments by Aspect, Clauser and Zeilinger supported quantum theory.","It turned a philosophical worry into an experimental result and grew into quantum information. The 2022 Nobel Prize in Physics honoured the work.","For decades many physicists treated the issue as philosophy and not science."],
+["Olbers’ paradox","If the universe is infinite and eternal, the night sky should be bright.","The puzzle pointed to a universe with a finite age and expansion.","A simple observation led to a basic question about the cosmos.","The puzzle took centuries to be fully resolved."],
+["Helicobacter pylori (Marshall and Warren, 1982)","Ulcers were attributed to stress and acid, so a bacterial cause seemed absurd.","Marshall drank a culture to show the effect; antibiotics became the treatment.","The 2005 Nobel Prize in Physiology or Medicine went to Marshall and Warren. The case shows value in testing against a strong expectation.","Their claim was dismissed for years, and most surprising claims turn out wrong."],
+["Cold fusion (Pons and Fleischmann, 1989)","A claim of nuclear fusion in a simple tabletop device.","Other laboratories tried to repeat it and failed to confirm.","The episode led to tighter standards for checking announced results.","It cost time and public trust, which shows the risk of chasing surprise."],
+["Maxwell’s demon (1867)","A tiny being that sorts fast and slow molecules seems to break the second law of thermodynamics.","Szilard, Landauer and Bennett linked the puzzle to information and the cost of erasing it.","It joined thermodynamics to information theory.","The solution took more than a century and is still discussed."],
+["Faster-than-light neutrinos (OPERA, 2011)","A result appeared to show particles beating light.","Checks found a fault in the equipment.","Scrutiny of a surprising result strengthened confidence in the standard theory.","Exploring it cost resources for an error."],
+["Galileo on falling bodies","Aristotle’s view that heavier objects fall faster leads to a contradiction when two bodies are tied together.","Galileo used the contradiction to argue that all objects fall at the same rate in a vacuum.","A thought experiment exposed a flaw before any measurement.","Thought experiments alone could not settle the matter without observation."]]},
+{k:"math",h:"Mathematics",x:[
+["Russell’s paradox (1901)","The set of all sets that do not contain themselves leads to contradiction.","It led to axiomatic set theory such as Zermelo–Fraenkel.","It exposed an assumption in the foundations.","The fix avoids the known paradox but does not guarantee there are no others."],
+["Banach–Tarski (1924)","A ball can be cut into pieces and reassembled into two balls of the same size.","It showed what the axiom of choice implies.","It made mathematicians clarify when they use the axiom.","The result applies to sets that cannot be physically made."],
+["Zeno’s paradoxes","Motion appears impossible if it must pass through infinitely many points.","Calculus and the idea of a limit explain how infinite sums can be finite.","A puzzle from antiquity helped shape a major tool.","It took over two thousand years to be handled rigorously."],
+["The Monty Hall problem","Switching doors after one is opened gives a two-thirds chance of winning.","Many people, including mathematicians, rejected the answer when it was published in 1990.","Working through it shows how intuition about probability fails.","A puzzle that teaches little beyond itself."]]},
+{k:"hum",h:"Human sciences",x:[
+["The Easterlin paradox (1974)","Richer people report higher happiness, yet national happiness did not rise with national income in the data Easterlin used.","Economists reopened the question with new data.","It prompted work on how happiness is measured.","Later studies disagree about whether the paradox holds."],
+["The Allais paradox (1953)","People’s choices violate expected utility theory.","It contributed to behavioural models such as prospect theory.","It challenged a core assumption of rational choice.","The result is robust in some settings but not in all."],
+["Simpson’s paradox (Berkeley admissions, 1973)","A trend in the whole data set reverses within subgroups.","Analysts learned to check how groups are formed.","It shows how data can mislead.","It can be used to argue for almost any conclusion."],
+["Braess’s paradox (1968)","Adding a road to a network can make travel times longer for everyone.","It is studied in traffic and network design.","It challenges the assumption that more capacity is always better.","The effect depends on particular conditions."]]},
+{k:"arts",h:"The arts",x:[
+["Hume, “Of Tragedy” (1757)","Why do we enjoy works that make us feel pain?","Hume proposed that the pleasure of art’s form and eloquence outweighs the pain.","It led to continuing debate about emotion and artistic response.","Philosophers still disagree about the answer."],
+["Duchamp, Fountain (1917)","A mass-produced urinal presented as art.","It forced debate about what makes something art.","It changed what artists and critics ask.","It may have mattered more as an idea than as a work."],
+["M. C. Escher, Ascending and Descending (1960)","A staircase that goes up or down forever.","Escher drew on the Penrose stairs and impossible figures.","It brought mathematical ideas about perception into art.","It shows a trick of representation, not a discovery about the world."],
+["René Magritte, The Treachery of Images (1929)","A painting of a pipe labelled “This is not a pipe”.","It drew attention to the gap between image and thing.","It sharpened questions about representation.","The point can be made quickly, so a long exploration may add little."]]}],
+pairs:[["Natural sciences + Mathematics","Paradoxes that change a theory against paradoxes that change foundations.","Entanglement; Russell’s paradox"],["Natural sciences + Human sciences","Surprising results tested by experiment against surprising results in human choice.","H. pylori; Allais paradox"],["Natural sciences + The arts","Paradox as a driver of discovery and as an artistic device. Say what knowledge the arts offer.","Olbers’ paradox; Escher"],["Natural sciences + History","Surprising claims about the past and how they are tested.","Choose cases with your teacher"]],
+pairsTitle:"Pick your second area",
+traps:[["Counterintuitive means true.","Show how the surprising claim was tested. Many are false."],
+["Treating paradox and counterintuitive as the same.","Say how they differ, then use the difference."],
+["Only listing famous paradoxes.","Explain what exploring each one produced."],
+["No limit on value.","Include the cost or risk of chasing surprise."],
+["Vague “value”.","Name the kinds of value and say which one your case shows."],
+["Description without evaluation.","Weigh the value against the cost for each area."]],
+tips:["Keep “value” in each paragraph and link each area to the title through how it explores a surprise.","Use named cases with what exploring produced, and state what follows for how fields should treat surprising claims.","Each area needs a real counterclaim: surprise that misled, wasted time or was resolved with little gain. Evaluate it."],
+chk:"I distinguish paradoxical from counterintuitive and name the kind of value I am claiming."}
+];
+
+/* ---------------- shared pieces ---------------- */
+var RUB='<div class="scroll"><table class="rub"><caption>Does the student provide a clear, coherent and critical exploration of the essay title?</caption><tr><th>Excellent<br>9–10</th><th>Good<br>7–8</th><th>Satisfactory<br>5–6</th><th>Basic<br>3–4</th><th>Rudimentary<br>1–2</th><th>0</th></tr><tr><td>The discussion has a sustained focus on the title and is linked effectively to areas of knowledge.</td><td>The discussion is focused on the title and is linked effectively to areas of knowledge.</td><td>The discussion is focused on the title and is developed with some links to areas of knowledge.</td><td>The discussion is connected to the title and makes superficial or limited links to areas of knowledge.</td><td>The discussion is weakly connected to the title.</td><td>The discussion does not reach the standard described by the other levels or is not a response to one of the prescribed titles for the correct examination session.</td></tr><tr><td>Arguments are clear, coherent and effectively supported by specific examples. The implications of arguments are considered.</td><td>Arguments are clear, coherent and supported by examples.</td><td>Arguments are offered and are supported by examples.</td><td>The discussion is largely descriptive.</td><td>While there may be links to the areas of knowledge, any relevant points are descriptive or consist only of unsupported assertions.</td><td></td></tr><tr><td>There is clear awareness and evaluation of different points of view.</td><td>There is awareness and some evaluation of different points of view.</td><td>There is some awareness of different points of view.</td><td>Limited arguments are offered but they are unclear and are not supported by effective examples.</td><td></td><td></td></tr><tr class="band"><td colspan="6">Possible characteristics</td></tr><tr class="chr"><td>Insightful</td><td>Pertinent</td><td>Acceptable</td><td>Underdeveloped</td><td>Ineffective</td><td></td></tr><tr class="chr"><td>Convincing</td><td>Relevant</td><td>Mainstream</td><td>Basic</td><td>Descriptive</td><td></td></tr><tr class="chr"><td>Accomplished</td><td>Analytical</td><td>Adequate</td><td>Superficial</td><td>Incoherent</td><td></td></tr><tr class="chr"><td>Lucid</td><td>Organized</td><td>Competent</td><td>Limited</td><td>Formless</td><td></td></tr></table></div>';
+
+function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;")}
+function $(id){return document.getElementById(id)}
+function sec(id,title,hue,body){return'<section id="'+id+'" style="--s:var('+hue+')"><h2>'+title+'</h2>'+body+'</section>'}
+function starters(a){return'<div class="starters"><b>Sentence starters</b><ul>'+a.map(function(x){return"<li>"+esc(x)+"</li>"}).join("")+"</ul></div>"}
+function role(c,chip,txt,w){return'<div class="role s-'+c+'"><span class="chip">'+chip+"</span><p>"+txt+(w?" <em>About "+w+" words.</em>":"")+"</p></div>"}
+function rc(h,w,s,roles,st,extra){return'<div class="card" style="--s:var('+s+')"><div class="para-head"><h3>'+h+'</h3><span class="words">about '+w+' words</span></div><div class="recipe">'+roles.join("")+"</div>"+(st?starters(st):"")+(extra||"")+"</div>"}
+
+function paras(p){
+  var h=p.par,o="";
+  o+='<p class="lead">Each recipe lists the parts in order. A part can be one sentence or several. Hit every part and you cover the three strands of the rubric.</p>';
+  o+=rc("Introduction",150,"--r-claim",[
+    role("claim","Interpret","Define the key terms you will use: "+h.defs+". Keep the meanings steady.",40),
+    role("exp","Argue","State your line of argument in one or two sentences. Take a position on "+h.stance+".",50),
+    role("ex","Map","Name your two areas and say what each will show, so the reader knows the route.",40)],h.ci);
+  o+=rc("Claim paragraph (use once for each area)",300,"--r-ex",[
+    role("claim","Claim","One sentence that answers the title for this area. "+h.claimHint,30),
+    role("ex","Example","One specific real-life case: names, dates, what was done or found.",70),
+    role("exp","Explain",h.explainHint,100),
+    role("link","Link",h.linkHint,40),
+    role("imp","Implication","Say what follows from your point. If it holds only under certain conditions, name them.",60)],h.cs);
+  o+=rc("Counterclaim paragraph (use once for each area)",300,"--r-ctr",[
+    role("ctr","Challenge","A serious opposing view for this area. "+h.counterHint,30),
+    role("ex","Example","A second real case from the same area that supports the challenge.",70),
+    role("exp","Evaluate","Decide what the challenge does to your claim. Does your explanation survive, need a qualification, or need to be rejected? Give a reason.",120),
+    role("int","Mini-conclusion","One or two sentences: what you now conclude about the title for this area. Include any implication.",80)],h.cc);
+  o+=rc("Conclusion",250,"--r-imp",[
+    role("claim","Answer","Answer the title directly in one or two sentences.",40),
+    role("exp","Draw together","Say what the two areas show together. Compare what happened in each.",90),
+    role("imp","Implication","State a consequence of your answer.",60),
+    role("link","Why it matters","Close by saying why the question matters or where the inquiry could go next.",60)],h.co,'<p class="lead">Do not bring in new examples here. Draw conclusions from the ones you have already analysed.</p>');
+  return o;
+}
+
+function mapBar(p){
+  var a=p.ar,k=p.ak;
+  return'<p class="lead">The structure: introduction, first area of knowledge, second area of knowledge, conclusion. Each area gets two paragraphs, a claim and a counterclaim, each with a real-life example. The word split adds up to 1,600.</p><div class="bar" role="list">'
+  +'<div role="listitem" class="s-claim" style="--w:150;--min:110px">Introduction<small>about 150</small></div>'
+  +'<div role="listitem" class="k-'+k[0]+'" style="--w:300;--min:130px">'+esc(a[0])+": claim<small>about 300</small></div>"
+  +'<div role="listitem" class="k-'+k[0]+'" style="--w:300;--min:130px">'+esc(a[0])+": counterclaim<small>about 300</small></div>"
+  +'<div role="listitem" class="k-'+k[1]+'" style="--w:300;--min:130px">'+esc(a[1])+": claim<small>about 300</small></div>"
+  +'<div role="listitem" class="k-'+k[1]+'" style="--w:300;--min:130px">'+esc(a[1])+": counterclaim<small>about 300</small></div>"
+  +'<div role="listitem" class="s-imp" style="--w:250;--min:120px">Conclusion<small>about 250</small></div></div>'
+  +'<p class="lead">Colours here only separate the blocks. Stay at or under 1,600 words in total, and ask your teacher how references and in-text citations are counted.</p>';
+}
+
+function cards(a){return'<div class="grid">'+a.map(function(c){return'<div class="card tint s-'+c[2]+'"><h3>'+c[0]+"</h3><p>"+c[1]+"</p></div>"}).join("")+"</div>"}
+function pairsHtml(p){return'<p class="lead">'+(p.id==="p1"?"The arts and history are fixed, so use this table to choose the contrasts that give you the most to say.":"Choose a pair that lets you compare how the idea works through different routes. Pairing areas where the mechanism differs gives you something to evaluate.")+'</p><div class="scroll"><table><tr><th>Pairing</th><th>What you can compare</th><th>Cases to start with</th></tr>'+p.pairs.map(function(r){return"<tr><td>"+r[0]+"</td><td>"+r[1]+"</td><td>"+r[2]+"</td></tr>"}).join("")+"</table></div>"}
+function trapsHtml(p){return'<div class="grid">'+p.traps.map(function(t){return'<div class="trap"><b>'+t[0]+"</b> "+t[1]+"</div>"}).join("")+"</div>"}
+function rubricHtml(p){
+  var s='<p class="lead">The essay is marked out of 10 against one question: does the student provide a clear, coherent and critical exploration of the essay title? Examiners read the three strands together and choose the band that best fits the whole essay.</p>'+RUB;
+  if(p){s+="<h3>How to hit each strand on Prompt "+p.n+'</h3><div class="grid"><div class="card tint s-claim"><h3>Focus and areas of knowledge</h3><p>'+p.tips[0]+'</p></div><div class="card tint s-ex"><h3>Arguments, examples, implications</h3><p>'+p.tips[1]+'</p></div><div class="card tint s-ctr"><h3>Points of view</h3><p>'+p.tips[2]+"</p></div></div>"}
+  return s;
+}
+function chkGroups(p){return[
+{h:"Focus and areas of knowledge",s:"--r-claim",i:["I define the key terms and use the meanings consistently.","Every paragraph answers the title, not only the introduction.","Each area is linked to the title through its methods, sources or practices.",p.chk]},
+{h:"Arguments, examples and implications",s:"--r-ex",i:["Each claim paragraph has a claim, a specific example, an explanation, a link and an implication.","Each example is named, dated and accurate, and I explain only what I can defend.","I analyse instead of describing."]},
+{h:"Points of view",s:"--r-ctr",i:["Each area has a counterclaim based on a real example.","I evaluate each counterclaim: it survives, needs a qualification, or is rejected, with a reason.","I end each area with a mini-conclusion.","My conclusion answers the title, draws the areas together and adds no new examples."]},
+{h:"Form",s:"--c-math",i:["The essay is 1,600 words or fewer.","Sources are acknowledged and in-text citations are used consistently.","The essay is my own work."]}]}
+
+function casesHtml(p){
+  var n=0;p.cases.forEach(function(a){n+=a.x.length});
+  var o='<p class="lead">Pick two cases per area: one for your claim paragraph and one for your counterclaim. Each card shows what the case offers and a limit you can use. Check dates and details in a reliable source before you use any example, and explain only what you can defend.</p>';
+  o+='<div class="note" role="note"><b>This is AI generated. Double check your work!</b> Verify every name, date and detail in a reliable source before you use any example.<br><b>You can most definitely use other examples!</b> Think about your subject areas and the examples you have learned over the past year.</div>';
+  o+='<div class="tabs" role="tablist" aria-label="Areas of knowledge" id="tabs"></div><div id="panels"></div>';
+  return{html:o,n:n};
+}
+function buildTabs(p){
+  var tabs=$("tabs"),panels=$("panels");if(!tabs)return;
+  p.cases.forEach(function(a,ai){
+    var b=document.createElement("button");b.type="button";b.className="k-"+a.k;b.id="tab-"+a.k;b.setAttribute("role","tab");b.setAttribute("aria-controls","panel-"+a.k);b.setAttribute("aria-selected",ai==0?"true":"false");b.textContent=a.h+" ("+a.x.length+")";
+    b.onclick=function(){showTab(p,a.k)};tabs.appendChild(b);
+    var d=document.createElement("div");d.className="panel k-"+a.k;d.id="panel-"+a.k;d.setAttribute("role","tabpanel");d.setAttribute("aria-labelledby","tab-"+a.k);d.hidden=ai!=0;
+    d.innerHTML='<div class="grid">'+a.x.map(function(e,i){return'<article class="ex"><h3><span class="no">'+(i+1)+"</span>"+esc(e[0])+"</h3><p><b>"+p.lab[0]+":</b> "+esc(e[1])+"</p><p><b>"+p.lab[1]+":</b> "+esc(e[2])+"</p><p><b>"+p.lab[2]+":</b> "+esc(e[3])+"</p><p><b>"+p.lab[3]+":</b> "+esc(e[4])+"</p></article>"}).join("")+"</div>";
+    panels.appendChild(d);
+  });
+}
+function showTab(p,k){p.cases.forEach(function(a){var on=a.k==k;$("tab-"+a.k).setAttribute("aria-selected",on?"true":"false");$("panel-"+a.k).hidden=!on})}
+
+/* ---------------- pages ---------------- */
+function homePage(){
+  var o='<header class="hero" style="--pc:#4f46e5"><div class="wrap"><div class="stripe" aria-hidden="true"><i style="background:#a78bfa"></i><i style="background:#f59e0b"></i><i style="background:#f472b6"></i><i style="background:#4ade80"></i><i style="background:#60a5fa"></i></div><div class="hrow"><h1>TOK Essay Guides</h1>'+DISC+'</div><p class="q">One page for each of the six prescribed titles, May 2027 session.</p><p class="meta">1,600 words maximum · IB Theory of Knowledge</p><div class="job"><b>How to use this site:</b> choose your title, read its page from top to bottom, then plan your paragraphs with the recipes and cases. Every page ends with the rubric and a tick-list. Nothing here is written for you: you decide what to argue.</div></div></header><main class="wrap">';
+  o+=sec("start","Start here","--r-int",'<p class="lead">Watch this overview of the May 2027 essay before you choose a title.</p>'+vidHtml("NsqwwYZvQOA")+'<p class="ref"><b>Reference:</b> TOK Today. “How to Smash ToK Essay May 27”. YouTube video. https://www.youtube.com/watch?v=NsqwwYZvQOA (accessed 9 November 2026).</p>');
+  o+='<section id="titles" style="--s:var(--p1)"><h2>Choose your title</h2><div class="grid">';
+  P.forEach(function(p){
+    var ar=p.id==="p1"?["The arts","History"]:p.id==="p3"?["Human sciences + 1"]:p.id==="p4"?["Mathematics + 1"]:p.id==="p6"?["Natural sciences + 1"]:["Any two areas"];
+    o+='<a class="pcard q'+p.n+'" href="#'+p.id+'" data-r="'+p.id+'"><span class="num">Prompt '+p.n+'</span><h3>'+esc(p.short)+'</h3><p>'+esc(p.q)+'</p><span class="areas">'+ar.map(function(x){return"<span>"+x+"</span>"}).join("")+'</span><span class="go">Open the guide →</span></a>';
+  });
+  o+="</div></section>";
+  o+='<section id="every" style="--s:var(--r-ex)"><h2>On every page</h2><div class="grid"><div class="card tint s-claim"><h3>The big idea</h3><p>Four steps that turn the title into a line of argument.</p></div><div class="card tint s-exp"><h3>Key terms</h3><p>What each phrase in the title asks of you.</p></div><div class="card tint s-ex"><h3>Essay map</h3><p>The 1,600-word split across introduction, two areas and conclusion.</p></div><div class="card tint s-link"><h3>Paragraph recipes</h3><p>What goes into each paragraph, part by part, with sentence starters.</p></div><div class="card tint s-int"><h3>Cases</h3><p>Real examples by area of knowledge, each with a limit for your counterclaim.</p></div><div class="card tint s-ctr"><h3>Traps and checklist</h3><p>Common mistakes, then a tick-list that saves your progress in this browser.</p></div></div></section>';
+  o+=sec("rubric","The assessment rubric","--c-nat",rubricHtml(null));
+  o+="</main>";
+  o+='<footer class="wrap"><p>Video: TOK Today, YouTube, https://www.youtube.com/watch?v=NsqwwYZvQOA (accessed 9 November 2026). Title notes draw on RevisionDojo’s M27 breakdown notes. The structure and word split follow Clastify’s guide to TOK essay format and structure. The rubric is the IB assessment instrument for the TOK essay. This is an unofficial study aid and is not endorsed by the IB. Check the exact wording of each title against the official IB prescribed titles sheet.</p></footer>';
+  return{html:o,jumps:[["start","Video","--r-int"],["titles","Titles","--p1"],["every","On every page","--r-ex"],["rubric","Rubric","--c-nat"]]};
+}
+
+function promptPage(p){
+  var cs=casesHtml(p),jumps=[["idea","Big idea","--r-claim"],["video","Video","--r-int"],["terms","Key terms","--r-exp"]];
+  var o='<header class="hero" style="--pc:var(--p'+p.n+')"><div class="wrap"><div class="stripe" aria-hidden="true"><i style="background:#a78bfa"></i><i style="background:#f59e0b"></i><i style="background:#f472b6"></i><i style="background:#4ade80"></i><i style="background:#60a5fa"></i></div><div class="hrow"><h1>Prompt '+p.n+": "+esc(p.short)+'</h1>'+DISC+'</div><p class="q">'+esc(p.q)+'</p><p class="meta">'+esc(p.meta)+'</p><div class="job"><b>Your job in one sentence:</b> '+esc(p.job)+"</div></div></header><main class=\"wrap\">";
+  o+=sec("idea","The big idea","--r-claim",'<div class="steps">'+p.idea.map(function(c){return'<div class="card tint step s-'+c[2]+'"><h3>'+c[0]+"</h3><p>"+c[1]+"</p></div>"}).join("")+'</div><div class="note"><b>Keep in mind:</b> '+p.note+"</div>");
+  o+=sec("video","Watch first","--r-int",'<p class="lead">Watch this video before you start planning. Pause it when you hear an idea you could use, and note which area of knowledge it fits.</p>'+vidHtml(p.vid)+'<p class="ref"><b>Reference:</b> TOK Today. YouTube video. https://www.youtube.com/watch?v='+p.vid+' (accessed 9 November 2026).</p>');
+  o+=sec("terms","Unpack the key terms","--r-exp",cards(p.terms));
+  p.extra.forEach(function(e){
+    var h=e.html.replace("__ORIG__",ORIG);
+    o+=sec(e.id,e.t,e.h,h);jumps.push([e.id,e.t,e.h]);
+  });
+  o+=sec("map","Your essay map","--r-ex",mapBar(p));
+  o+=sec("paras","What goes inside each paragraph","--r-link",paras(p));
+  o+=sec("pairs",p.pairsTitle,"--c-math",pairsHtml(p));
+  o+=sec("cases",cs.n+" cases to draw on","--c-hum",cs.html);
+  o+=sec("traps","Traps to avoid","--r-ctr",trapsHtml(p));
+  o+=sec("rubric","The assessment rubric","--c-nat",rubricHtml(p));
+  o+=sec("check","Final check","--c-arts",'<p class="lead">Tick an item only when you can point to the sentence that does it. Your ticks are saved in this browser.</p><div class="prog" aria-hidden="true"><i id="pbar"></i></div><p><b id="ptxt">0 of 0 done</b></p><div class="grid" id="checks"></div>');
+  o+="</main>";
+  var nx=P[p.n%6],pv=P[(p.n+4)%6];
+  o+='<footer class="wrap"><p><a href="#'+pv.id+'" data-r="'+pv.id+'">← Prompt '+pv.n+'</a> · <a href="#home" data-r="home">All titles</a> · <a href="#'+nx.id+'" data-r="'+nx.id+'">Prompt '+nx.n+' →</a></p><p style="margin-top:10px">'+(p.id==="p2"?"Video: YouTube, https://www.youtube.com/watch?v=L-udmzgZVas (accessed 9 November 2026). ":"")+'Title notes draw on RevisionDojo’s M27 breakdown notes. The structure and word split follow Clastify’s guide to TOK essay format and structure. The rubric is the IB assessment instrument for the TOK essay. This is an unofficial study aid and is not endorsed by the IB. Check the exact wording of the title against the official IB prescribed titles sheet.</p></footer>';
+  jumps=jumps.concat([["map","Map","--r-ex"],["paras","Paragraphs","--r-link"],["pairs","Areas","--c-math"],["cases","Cases","--c-hum"],["traps","Traps","--r-ctr"],["rubric","Rubric","--c-nat"],["check","Checklist","--c-arts"]]);
+  return{html:o,jumps:jumps};
+}
+
+function buildChecks(p){
+  var cs=$("checks");if(!cs)return;
+  var key="tokg-"+p.id,saved={};
+  try{saved=JSON.parse(localStorage.getItem(key)||"{}")||{}}catch(e){saved={}}
+  chkGroups(p).forEach(function(g,gi){
+    var d=document.createElement("div");d.className="card tint";d.style.setProperty("--s","var("+g.s+")");
+    d.innerHTML="<h3>"+g.h+"</h3>"+g.i.map(function(x,ii){var id="c"+gi+"_"+ii;return'<label class="chk" for="'+id+'"><input type="checkbox" id="'+id+'"'+(saved[id]?" checked":"")+"><span>"+esc(x)+"</span></label>"}).join("");
+    cs.appendChild(d);
+  });
+  function prog(){var all=cs.querySelectorAll("input"),n=0,st={};for(var i=0;i<all.length;i++){if(all[i].checked){n++;st[all[i].id]=1}}
+    $("pbar").style.width=(100*n/all.length)+"%";$("ptxt").textContent=n+" of "+all.length+" done";
+    try{localStorage.setItem(key,JSON.stringify(st))}catch(e){}}
+  cs.addEventListener("change",prog);prog();
+}
+
+/* ---------------- shell and routing ---------------- */
+function siteBar(cur){
+  var o='<a href="#home" data-r="home" style="--s:var(--ink)"'+(cur==="home"?' aria-current="page"':"")+">Home</a>";
+  P.forEach(function(p){o+='<a href="#'+p.id+'" data-r="'+p.id+'" style="--s:var(--p'+p.n+')"'+(cur===p.id?' aria-current="page"':"")+">Prompt "+p.n+"</a>"});
+  $("rowSite").innerHTML=o;
+}
+function jumpBar(j){
+  var r=$("rowJump");
+  r.innerHTML=j.map(function(x){return'<button type="button" data-go="'+x[0]+'" style="--s:var('+x[2]+')">'+x[1]+"</button>"}).join("");
+  r.hidden=false;
+}
+function render(id){
+  var p=null;P.forEach(function(q){if(q.id===id)p=q});
+  var pg=p?promptPage(p):homePage();
+  document.title=p?"TOK Prompt "+p.n+" Guide":"TOK Essay Guides May 2027";
+  $("app").innerHTML=pg.html;
+  siteBar(p?p.id:"home");jumpBar(pg.jumps);
+  if(p){buildTabs(p);buildChecks(p)}
+  window.scrollTo(0,0);
+}
+function cur(){var h="";try{h=(location.hash||"").replace("#","")}catch(e){}
+  if(!/^[a-z0-9-]+$/.test(h))return"home";return h}
+document.addEventListener("click",function(e){
+  var t=e.target;
+  while(t&&t!==document&&!(t.getAttribute&&(t.getAttribute("data-r")||t.getAttribute("data-go"))))t=t.parentNode;
+  if(!t||t===document)return;
+  var r=t.getAttribute("data-r"),g=t.getAttribute("data-go");
+  if(r){e.preventDefault();try{history.replaceState(null,"","#"+r)}catch(x){}render(r)}
+  else if(g){var el=$(g);if(el)el.scrollIntoView({behavior:"smooth",block:"start"})}
+});
+window.addEventListener("hashchange",function(){render(cur())});
+render(cur());
+</script>
+
+</body>
+</html>
